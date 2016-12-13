@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta name="description" content="DHIS 2">
+  <meta name="keywords" content="DHIS 2">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link type="text/css" rel="stylesheet" href="../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen,print" href="../dhis-web-commons/css/light_blue/light_blue.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen,print" href="../dhis-web-commons/css/widgets.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="print" href="../dhis-web-commons/css/print.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/select2/select2.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen" href="style/dashboard.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/material-design-icons/material-icons.css?_rev=c8eee8d" />
+  <link type="text/css" rel="stylesheet" href="../api/files/style?_rev=c8eee8d" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <!-- Material UI fonts -->
+  <link href="../dhis-web-commons/fonts/roboto.css" rel="stylesheet" type="text/css">
+  <link href="../dhis-web-commons/material-design-icons/material-icons.css" rel="stylesheet" type="text/css">
+  <style>
+    html {
+      font-size: 14px;
+    }
+
+    #header * {
+      font-family: 'Roboto';
+    }
+  </style>
+
+  <script type="text/javascript">
+    var dateFormat = 'yy-mm-dd';
+  </script>
+
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/ext/ext-all.js"></script>
+
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.min.js?_rev=c8eee8d"></script>
+
+  <script type="text/javascript" src="javascript/ejs.min.js"></script>
+
+  <script type="text/javascript" src="./app.js"></script>
+
+  <script type="text/javascript" src="javascript/translation.js"></script>
+
+  <script>
+
+
+    //    const uiLocale = 'en';
+    //    if (uiLocale && uiLocale !== 'en') {
+    //      // Add the language sources for the preferred locale
+    //      dhis2.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
+    //    }
+    //    // Add english as locale for all cases (either as primary or fallback)
+    //    dhis2.i18n.addSource('./i18n/i18n_module_en.properties');
+    //    dhis2.i18n.load();
+    //    console.log("finished configI18n");
+    //    alert("finished configI18n");
+
+
+  </script>
+
+
+  <!-- Menu dependencies -->
+  <script type="text/javascript" src="../dhis-web-core-resource/react-15/react-15.min.js"></script>
+  <script type="text/javascript" src="../dhis-web-core-resource/rxjs/4.1.0/rx.lite.min.js"></script>
+  <script type="text/javascript" src="../dhis-web-core-resource/lodash/4.15.0/lodash.min.js"></script>
+  <script type="text/javascript" src="../dhis-web-core-resource/lodash-functional/lodash-functional.js"></script>
+  <!-- Menu script is up here due to perceived loading time increase -->
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/babel-polyfill.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/header-bar.js?_rev=c8eee8d"></script>
+  <script>
+    // Needs to be wrapped in jQuery to be sure the DOM is parsed as the script is not at the bottom.
+    jQuery(function () {
+      if( Dhis2HeaderBar ){
+        Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
+      }
+    });
+  </script>
+  <!-- // End menu -->
+  <!--[if lte IE 8]><script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=c8eee8d"></script><![endif]-->
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.utils.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.ext.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.metadata.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.tablesorter.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.upload-1.0.2.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.dhisAjaxSelect.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/ui/jquery.blockUI.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.validate.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.validate.ext.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.cookie.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.glob.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.date.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.tmpl.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.autogrow.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.fileupload.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/underscore.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/filesize.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.util.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/commons.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/commons.ajax.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/lists.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/periodType.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/json2.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/validationRules.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.array.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.select.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/moment/moment-with-langs.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/select2/select2.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.period.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.selected.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.comparator.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.availability.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.trigger.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.validation.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.contextmenu.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.appcache.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.translate.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.sharing.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/i18nJavaScript.action?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../main.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../request.js?_rev=c8eee8d"></script>
+
+  <script type="text/javascript" src="../api/files/script?_rev=c8eee8d"></script>
+  <!-- Create global system calendar -->
+  <script>
+    dhis2.period.format = 'yyyy-mm-dd';
+    dhis2.period.calendar = $.calendars.instance('gregorian');
+    dhis2.period.generator = new dhis2.period.PeriodGenerator( dhis2.period.calendar, dhis2.period.format );
+    dhis2.period.picker = new dhis2.period.DatePicker( dhis2.period.calendar, dhis2.period.format );
+  </script>
+
+</head>
+
+<body class="x-body x-webkit x-chrome x-mac x-reset">
+
+<div id="header">
+  <img id="headerBanner" src="../api/staticContent/logo_banner" onclick="window.location.href='../dhis-web-commons-about/redirect.action'" style="cursor:pointer" title="">
+
+  <div id="dhisDropDownMenu"></div>
+</div>
+<span id="showLeftBar">
+      <a href="javascript:dhis2.leftBar.showAnimated()" name="i18n_show_menu">
+        <i class="fa fa-arrow-right leftBarIcon"></i>
+      </a>
+    </span>
+
+<div id="headerMessage" class="bold"></div>
+
+<div class="page" id="mainPage"> <!-- Do not set style attr -->
+
+  <!-- DHIS2 Settings initialization for a baseUrl that is used for the menu -->
+  <script>
+    window.dhis2 = window.dhis2 || {};
+    dhis2.settings = dhis2.settings || {};
+    dhis2.settings.baseUrl = '..';
+
+
+  </script>
+
+  <!-- Menu scripts -->
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.translate.js"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
+
+  <script type="text/javascript" src="../dhis-web-pivot/reporttable.js"></script>
+  <script type="text/javascript" src="../dhis-web-visualizer/chart.js"></script>
+  <script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
+  <script type="text/javascript" src="plugin/eventreport.js"></script>
+  <script type="text/javascript" src="plugin/eventchart.js"></script>
+  <script type="text/javascript" src="../dhis-web-commons/oust/oust.js"></script>
+  <script type="text/javascript" src="javascript/dashboard.js"></script>
+
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js"></script>
+
+  <script type="text/javascript">
+
+    jQuery( document ).ready( function() {
+      dhis2.leftBar.resetPosition();
+    });
+
+  </script>
+  <div id="interpretationPopup">
+  </div>
+
+
+  <div id="dashboardHeader"><h3>
+      <div style="display:none" id="updateProfileCont">
+        <a class="alert" href="../../../dhis-web-user-profile/#/profile" id="i18n_update_profile"></a> &nbsp;&#8226;&nbsp;
+      </div>
+
+
+    <a href="showSendFeedback.action" id="i18n_write_feedback"></a>
+      <span style="display:none;inline;" id="messageCont">
+      &nbsp;&#8226;&nbsp; <a class="alert" href="../dhis-web-messaging/message.action" id="messageCount"></a>
+      </span>
+      <span style="display:none" id="interpretationCont">
+      &nbsp;&#8226;&nbsp;<a class="alert" href="../dhis-web-messaging/interpretation.action" id="interpretationCount">
+      </a>
+      </span>
+    &nbsp;&#8226;&nbsp; <span id="dashboardTitle"></span>
+  </h3></div>
+
+  <div id="dashboardMenu" class="horizontalMenu">
+    <ul>
+      <li><a class="greyButtonLink" href="../dhis-web-messaging/message.action" name="i18n_messages"></a></li>
+      <li><a class="greyButtonLink" href="../dhis-web-messaging/interpretation.action" name="i18n_interpretations"></a></li>
+    </ul>
+  </div>
+
+  <div id="searchDiv"><input type="text" id="searchField" autocomplete="off" placeholder=""></div>
+  <div id="hitDiv"></div>
+
+  <div id="searchButton"><a class="blueButtonLink" href="javascript:dhis2.db.search()" id="i18n_search"></a></div>
+
+  <div id="cogButton"><a class="greyButtonLink" href="javascript:dhis2.db.viewOrgUnitSelector()"><i class="fa fa-cog"></i></a></div>
+
+  <div id="dashboardControl" class="horizontalMenu dashboardList">
+    <ul>
+      <li><a class='bold' href='javascript:dhis2.db.openAddDashboardForm()' ><label id="i18n_add"></label></a></li>
+      <li id="manageDashboard"><a class='bold' name="i18n_manage"></a></li>
+      <li id="manageSharing"><a class='bold' name="i18n_share"></a></li>
+      <li><a class='bold' href='javascript:dhis2.db.scrollLeft()' title='$i18n.getString( "previous" )'>&lt;</a></li>
+      <li><a class='bold' href='javascript:dhis2.db.scrollRight()' title='$i18n.getString( "next" )'>&gt;</a></li>
+    </ul>
+  </div>
+
+  <div id="dashboardListContainer" class="horizontalMenu">
+    <div id="dashboardListWrapper" class="dashboardList">
+      <ul id="dashboardList"></ul>
+    </div>
+  </div>
+
+  <div id="contentDiv">
+    <ul id="contentList" class="horizontalMenu"></ul>
+  </div>
+
+  <div id="chartView" class="page">
+    <div id="chartViewHeader">
+      <span><a id="chartImageDownload" href="javascript:dhis2.db.downloadImage()">$i18n.getString( "download" )</a></span>
+      <span>$i18n.getString( "api_link" ): <a id="chartImageUrl" target="_blank"></a></span>
+    </div>
+    <div><img id="chartImage" src="" style="padding: 10px;"></div>
+  </div>
+
+  <div id="reportDialogView" class="page"></div>
+
+  <div id="shareForm">
+    <textarea id="interpretationArea" class="interpretationArea" ></textarea>
+    <input type="button" class="interpretationButton" value="" onclick="dhis2.db.shareInterpretation()">
+  </div>
+
+  <div id="shareHelpForm">
+    <ul>
+      <li><label name="i18n_from"></label> <a href="../dhis-web-pivot/index.html" id="i18n_pivot_table"></a>, <label id="i18n_generate_pivot_table_click_share"></label> </li>
+      <li><label name="i18n_from"></label> </label>  <a href="../dhis-web-visualizer/index.html" id="i18n_data_visualizer"></a>, <label id="i18n_load_favorite_click_share"></label></li>
+      <li><label name="i18n_from"></label> </label>  <a href="../dhis-web-mapping/index.html" id="i18n_gis"></a>, <label name="i18n_load_favorite_click_share"></label></li>
+      <li><label name="i18n_from"></label> </label>  <a href="../dhis-web-reporting/showDataSetReportForm.action" id="i18n_data_set_report"></a>, <label id="i18n_generate_data_set_report_click_share"></label></li>
+    </ul>
+  </div>
+
+  <div id="addDashboardForm">
+    <label style="margin-right: 10px" name="i18n_name"></label><input type="text" id="dashboardName" style="width: 240px; padding: 5px; margin-right: 10px;">
+    <a class="greyButtonLink" href="javascript:dhis2.db.addDashboard()" style="margin-top: 1px" name="i18n_create"></a>
+  </div>
+
+  <div id="manageDashboardForm" class="page">
+    <h4 id="i18n_rename_current_dashboard"></h4>
+    <div><label style="margin-right: 10px" name="i18n_name"></label><input type="text" id="dashboardRename" style="width: 230px; padding: 5px; margin-right: 10px;">
+      <a class="greyButtonLink" href="javascript:dhis2.db.renameDashboard()" style="margin-top: 1px" name="i18n_rename"></a></div>
+    <h4 id="i18n_add_items_to_current_dashboard"></h4>
+    <div><a class="greyButtonLink" href="javascript:dhis2.db.addMessagesContent()" name="i18n_messages"></a></div>
+    <h4 id="i18n_delete_current_dashboard"></h4>
+    <div><a class="greyButtonLink" href="javascript:dhis2.db.removeDashboard()" name="i18n_delete"></a></div>
+    <h4 id="i18n_translate_current_dashboard"></h4>
+    <div><a class="greyButtonLink" href="javascript:dhis2.db.translateDashboard()" name="i18n_translate"></a></div>
+  </div>
+
+  <div id="orgUnitSelectorForm" class="page">
+    <div class="tipText" style="padding: 2px 0 4px 0" id="i18n_applies_to_favorites_with_user_org_units_only" ></div>
+    <div id="selectionTree" style="width:339px; height:376px"></div>
+    <div style="padding-top:15px; float:right;">
+      <a class="greyButtonLink" href="javascript:dhis2.db.clearSelectedOrgUnits()" name="i18n_clear"></a>
+      <a class="greyButtonLink" href="javascript:dhis2.db.updateSelectedOrgUnits()" name="i18n_update"></a>
+    </div>
+  </div>
+
+</div>
+<div id="rightBar">
+      <span id="hideRightBar"><a href="javascript:hideHelpContent()" name="i18n_close" >
+        <i class="fa fa-times leftBarIcon"></i></a>
+      </span>
+  <div id="rightBarContents"></div>
+</div>
+
+
+<div id="sharingSettings" style="display: none;" class="page">
+  <table style="width: 100%;">
+    <tbody>
+    <tr>
+      <td colspan="2" style="height: 40px"><span class="settingHeader" id="sharingName"></span></td>
+    </tr>
+    <tr>
+      <td><input style="width: 100%;" id="sharingFindUserGroup" placeholder="$i18n.getString( 'search_for_user_groups' )"/></td>
+      <td style="width: 24px;"><button id="addUserGroupAccess" disabled="disabled" style="width:24px; margin-left:2px; text-align:center;">+</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table id="sharingAccessTable" style="width: 100%; margin-top: 6px;">
+    <tbody>
+    <tr>
+      <td colspan="2" style="padding: 5px 0"><span class="tipText" id="i18n_created_by"></span><span class="tipText" id="sharingUser"></span></td>
+    </tr>
+    <tr>
+      <td style="width: 300px; padding: 5px 0;" id="i18n_external_access"></td>
+      <td style="text-align: right;">
+        <input id="sharingExternalAccess" type="checkbox" value="true" />
+      </td>
+      <td style="width: 25px; text-align: center;"></td>
+    </tr>
+    <tr>
+      <td style="width: 300px;" id="i18n_public_access"></td>
+      <td>
+        <select id="sharingPublicAccess" style="width: 150px;">
+          <option selected="selected" value="--------" name="i18n_none"></option>
+          <option value="r-------" name="i18n_can_view"></option>
+          <option value="rw------" name="i18n_can_edit_and_view"></option>
+        </select>
+      </td>
+      <td style="width: 25px; text-align: center;"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script id="user-group-access-template" type="text/template">
+  <tr id="<%= id %>">
+    <td class="sharingGroupName" style="width: 300px;"><%= label %></td>
+    <td>
+      <select class="sharingGroupAccess" style="width: 150px;">
+        <option name="i18n_can_view" value="r-------" <% if(access == 'r-------') { %>selected<% } %>></option>
+        <option name="i18n_can_edit_and_view" value="rw------" <% if(access == 'rw------') { %>selected<% } %>></option>
+      </select>
+    </td>
+    <td style="width: 25px; text-align: center;"><a href="" class="removeUserGroupAccess">X</a></td>
+  </tr>
+</script>
+
+</body>
+</html>

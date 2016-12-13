@@ -7,6 +7,14 @@ node_modules
 build
 coverage
 manifest.webapp
+target
+./taret
+./target
+./target/classes
+target/**
+.classpath
+.project
 
 # Misc files
 npm-debug.log
+.DS_Store
