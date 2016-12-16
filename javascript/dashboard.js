@@ -39,42 +39,6 @@ dhis2.db.chartItems = [];
 // TODO double horizontal size
 
 //------------------------------------------------------------------------------
-// Document ready
-//------------------------------------------------------------------------------
-
-$(document).ready(function () {
-    $("#interpretationArea").autogrow();
-
-    $(document).click(function(){dhis2.db.hideSearch();dhis2.db.hideInterpretationPopup();});
-
-    $(window).resize(dhis2.db.drawWideItems);
-
-    $("#searchField").focus(function () {
-        $("#searchDiv").css("border-color", "#999");
-    }).blur(function () {
-        $("#searchDiv").css("border-color", "#aaa");
-    });
-
-    $("#searchField").focus();
-    $("#searchField").keyup(dhis2.db.search);
-
-    selectionTreeSelection.setMultipleSelectionAllowed(true);
-    selectionTree.clearSelectedOrganisationUnitsAndBuildTree();
-
-    $.getJSON("../api/me/user-account.json?" + dhis2.util.cacheBust(), function (json) {
-        dhis2.db.currentKey = "dhis2.dashboard.current." + json.username;
-        dhis2.db.renderDashboardListLoadFirst();
-    });
-
-    $.getJSON("../api/system/info.json", function (json) {
-        dhis2.db.contextPath = json.contextPath;
-    });
-    
-    //Initialize interpretation popup events
-    dhis2.db.initInterpretationPopupEvents();
-});
-
-//------------------------------------------------------------------------------
 // Dashboard
 //------------------------------------------------------------------------------
 
@@ -1646,3 +1610,41 @@ dhis2.db.showInterpretationPopup = function (event, id, type) {
 		interpretationPopup.show();
 	});
 }
+
+
+//------------------------------------------------------------------------------
+// Document ready
+//------------------------------------------------------------------------------
+
+$(document).ready(function () {
+  $("#interpretationArea").autogrow();
+
+  $(document).click(function(){dhis2.db.hideSearch();dhis2.db.hideInterpretationPopup();});
+
+  $(window).resize(dhis2.db.drawWideItems);
+
+  $("#searchField").focus(function () {
+    $("#searchDiv").css("border-color", "#999");
+  }).blur(function () {
+    $("#searchDiv").css("border-color", "#aaa");
+  });
+
+  $("#searchField").focus();
+  $("#searchField").keyup(dhis2.db.search);
+
+  selectionTreeSelection.setMultipleSelectionAllowed(true);
+  selectionTree.clearSelectedOrganisationUnitsAndBuildTree();
+
+  $.getJSON("../api/me/user-account.json?" + dhis2.util.cacheBust(), function (json) {
+    dhis2.db.currentKey = "dhis2.dashboard.current." + json.username;
+    dhis2.db.renderDashboardListLoadFirst();
+  });
+
+  $.getJSON("../api/system/info.json", function (json) {
+    dhis2.db.contextPath = json.contextPath;
+  });
+
+  //Initialize interpretation popup events
+  dhis2.db.initInterpretationPopupEvents();
+});
+

@@ -7,7 +7,6 @@ import { init, config, getInstance, getManifest, getUserSettings } from 'd2/lib/
 import log from 'loglevel';
 import dhis2 from 'd2-ui/lib/header-bar/dhis2';
 
-
 function configI18n(userSettings) {
   const uiLocale = userSettings.keyUiLocale;
   if( uiLocale && uiLocale !== 'en' ) {
@@ -24,7 +23,7 @@ function configI18n(userSettings) {
 // and initialise the library. We use the initialised library to pass it into the app
 // to make it known on the context of the app, so the sub-components (primarily the d2-ui components)
 // can use it to access the api, translations etc.
-  getManifest('./manifest.webapp')
+getManifest('./manifest.webapp')
       .then(manifest => {
         const baseUrl = process.env.NODE_ENV === 'production' ? manifest.getBaseUrl() : dhisDevConfig.baseUrl;
         config.baseUrl = `${baseUrl}/api`;
@@ -38,6 +37,75 @@ function configI18n(userSettings) {
       .then(init)
       .catch(log.error.bind(log));
 
+
+
+function initPage() {
+
+  getInstance().then(d2 => {
+    const api = d2.Api.getApi();
+    let unreadInterpretations;
+    let unreadMessageConversations;
+    let isProfileFilled;
+
+    api.get("/me/dashboard", {})
+        .then(data => {
+          unreadInterpretations = data.unreadInterpretations;
+          unreadMessageConversations = data.unreadMessageConversations;
+
+          if( unreadMessageConversations > 0 ) {
+            if( unreadMessageConversations > 1 ) {
+              jQuery("#messageCount").html(unreadMessageConversations + " " + d2.i18n.getTranslation("unread_messages"));
+            } else {
+              jQuery("#messageCount").html(unreadMessageConversations + " " + d2.i18n.getTranslation("unread_message"));
+            }
+            jQuery("#messageCont").show();
+          } else {
+            jQuery("#messageCont").hide();
+          }
+
+          if( unreadInterpretations > 0 ) {
+            if( unreadInterpretations > 1 ) {
+              jQuery("#interpretationCount").html(unreadInterpretations + " " + d2.i18n.getTranslation("new_interpretations"));
+            } else {
+              jQuery("#interpretationCount").html(unreadInterpretations + " " + d2.i18n.getTranslation("new_interpretation"));
+            }
+            jQuery("#interpretationCount").show();
+          } else {
+            jQuery("#interpretationCount").hide();
+          }
+
+        });
+
+    api.get("me", {})
+        .then(data => {
+          isProfileFilled = checkProfileFilled(data);
+          if( !isProfileFilled ) {
+            jQuery("#updateProfileCont").css("display", "inline");
+          } else {
+            jQuery("#updateProfileCont").hide();
+          }
+        });
+
+  });
+}
+
+jQuery(document).ready(function () {
+
+  initPage();
+
+  getInstance()
+      .then( d2 => initTranslation(d2) )
+      .then( () => loadScript('javascript/dashboard.js'));
+
+});
+
+const loadScript = function ( script )
+{
+  let firstScript = document.getElementsByTagName('script')[0];
+  let js = document.createElement('script');
+  js.src = script;
+  firstScript.parentNode.insertBefore(js, firstScript);
+}
 
 const checkProfileFilled  = function ( curUser )
 {
@@ -53,6 +121,8 @@ const checkProfileFilled  = function ( curUser )
 
   return count > 3;
 }
+
+
 
 function initTranslation( d2 ){
 
@@ -127,62 +197,4 @@ function initTranslation( d2 ){
   jQuery("#interpretationArea").attr({"placeholder":d2.i18n.getTranslation("write_your_interpretation")});
   jQuery(".interpretationButton").val(d2.i18n.getTranslation("share"));
 }
-
-function startPage() {
-
-  getInstance().then(d2 => {
-
-    initTranslation(d2);
-
-    const api = d2.Api.getApi();
-    let unreadInterpretations;
-    let unreadMessageConversations;
-    let isProfileFilled;
-
-    api.get("/me/dashboard", {})
-        .then(data => {
-          unreadInterpretations = data.unreadInterpretations;
-          unreadMessageConversations = data.unreadMessageConversations;
-
-          if( unreadMessageConversations > 0 ) {
-            if( unreadMessageConversations > 1 ) {
-              jQuery("#messageCount").html(unreadMessageConversations + " " + d2.i18n.getTranslation("unread_messages"));
-            } else {
-              jQuery("#messageCount").html(unreadMessageConversations + " " + d2.i18n.getTranslation("unread_message"));
-            }
-            jQuery("#messageCont").show();
-          } else {
-            jQuery("#messageCont").hide();
-          }
-
-          if( unreadInterpretations > 0 ) {
-            if( unreadInterpretations > 1 ) {
-              jQuery("#interpretationCount").html(unreadInterpretations + " " + d2.i18n.getTranslation("new_interpretations"));
-            } else {
-              jQuery("#interpretationCount").html(unreadInterpretations + " " + d2.i18n.getTranslation("new_interpretation"));
-            }
-            jQuery("#interpretationCount").show();
-          } else {
-            jQuery("#interpretationCount").hide();
-          }
-
-        });
-
-    api.get("me", {})
-        .then(data => {
-          isProfileFilled = checkProfileFilled(data);
-          if( !isProfileFilled ) {
-            jQuery("#updateProfileCont").show();
-          } else {
-            jQuery("#updateProfileCont").hide();
-          }
-        });
-
-  });
-}
-
-
-jQuery(document).ready(function(){
-  startPage();
-});
 

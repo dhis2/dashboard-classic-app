@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
   <meta name="description" content="DHIS 2">
   <meta name="keywords" content="DHIS 2">
@@ -31,52 +31,7 @@
   <script type="text/javascript">
     var dateFormat = 'yy-mm-dd';
   </script>
-
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/ext/ext-all.js"></script>
-
   <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.min.js?_rev=c8eee8d"></script>
-
-  <script type="text/javascript" src="javascript/ejs.min.js"></script>
-
-  <script type="text/javascript" src="./app.js"></script>
-
-  <script type="text/javascript" src="javascript/translation.js"></script>
-
-  <script>
-
-
-    //    const uiLocale = 'en';
-    //    if (uiLocale && uiLocale !== 'en') {
-    //      // Add the language sources for the preferred locale
-    //      dhis2.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
-    //    }
-    //    // Add english as locale for all cases (either as primary or fallback)
-    //    dhis2.i18n.addSource('./i18n/i18n_module_en.properties');
-    //    dhis2.i18n.load();
-    //    console.log("finished configI18n");
-    //    alert("finished configI18n");
-
-
-  </script>
-
-
-  <!-- Menu dependencies -->
-  <script type="text/javascript" src="../dhis-web-core-resource/react-15/react-15.min.js"></script>
-  <script type="text/javascript" src="../dhis-web-core-resource/rxjs/4.1.0/rx.lite.min.js"></script>
-  <script type="text/javascript" src="../dhis-web-core-resource/lodash/4.15.0/lodash.min.js"></script>
-  <script type="text/javascript" src="../dhis-web-core-resource/lodash-functional/lodash-functional.js"></script>
-  <!-- Menu script is up here due to perceived loading time increase -->
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/babel-polyfill.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/header-bar.js?_rev=c8eee8d"></script>
-  <script>
-    // Needs to be wrapped in jQuery to be sure the DOM is parsed as the script is not at the bottom.
-    jQuery(function () {
-      if( Dhis2HeaderBar ){
-        Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
-      }
-    });
-  </script>
-  <!-- // End menu -->
   <!--[if lte IE 8]><script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=c8eee8d"></script><![endif]-->
   <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.utils.js?_rev=c8eee8d"></script>
   <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.ext.js?_rev=c8eee8d"></script>
@@ -131,6 +86,69 @@
   <script type="text/javascript" src="../request.js?_rev=c8eee8d"></script>
 
   <script type="text/javascript" src="../api/files/script?_rev=c8eee8d"></script>
+
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/ext/ext-all.js"></script>
+
+  <script type="text/javascript" src="javascript/ejs.min.js"></script>
+
+  <script type="text/javascript" src="javascript/interpretation.js"></script>
+
+  <script type="text/javascript" src="javascript/message.js"></script>
+
+  <script type="text/javascript" src="javascript/profile.js"></script>
+
+  <!-- Menu dependencies -->
+  <script type="text/javascript" src="../dhis-web-core-resource/react-15/react-15.min.js"></script>
+  <script type="text/javascript" src="../dhis-web-core-resource/rxjs/4.1.0/rx.lite.min.js"></script>
+  <script type="text/javascript" src="../dhis-web-core-resource/lodash/4.15.0/lodash.min.js"></script>
+  <script type="text/javascript" src="../dhis-web-core-resource/lodash-functional/lodash-functional.js"></script>
+  <!-- Menu script is up here due to perceived loading time increase -->
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/babel-polyfill.js?_rev=c8eee8d"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/header-bar.js?_rev=c8eee8d"></script>
+
+  <script>
+    // Needs to be wrapped in jQuery to be sure the DOM is parsed as the script is not at the bottom.
+    jQuery(function () {
+      if( Dhis2HeaderBar ){
+        Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
+      }
+    });
+  </script>
+
+  <!-- DHIS2 Settings initialization for a baseUrl that is used for the menu -->
+  <script>
+    window.dhis2 = window.dhis2 || {};
+    dhis2.settings = dhis2.settings || {};
+    dhis2.settings.baseUrl = '..';
+
+
+  </script>
+
+  <!-- Menu scripts -->
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
+
+  <script type="text/javascript" src="../dhis-web-pivot/reporttable.js"></script>
+  <script type="text/javascript" src="../dhis-web-visualizer/chart.js"></script>
+  <script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
+  <script type="text/javascript" src="plugin/eventreport.js"></script>
+  <script type="text/javascript" src="plugin/eventchart.js"></script>
+  <script type="text/javascript" src="../dhis-web-commons/oust/oust.js"></script>
+
+  <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js"></script>
+
+  <script type="text/javascript" src="./app.js"></script>
+
+  <script type="text/javascript">
+
+    jQuery( document ).ready( function() {
+      dhis2.leftBar.resetPosition();
+    });
+
+  </script>
+
+  <!-- // End menu -->
+
   <!-- Create global system calendar -->
   <script>
     dhis2.period.format = 'yyyy-mm-dd';
@@ -158,37 +176,7 @@
 
 <div class="page" id="mainPage"> <!-- Do not set style attr -->
 
-  <!-- DHIS2 Settings initialization for a baseUrl that is used for the menu -->
-  <script>
-    window.dhis2 = window.dhis2 || {};
-    dhis2.settings = dhis2.settings || {};
-    dhis2.settings.baseUrl = '..';
 
-
-  </script>
-
-  <!-- Menu scripts -->
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.translate.js"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
-
-  <script type="text/javascript" src="../dhis-web-pivot/reporttable.js"></script>
-  <script type="text/javascript" src="../dhis-web-visualizer/chart.js"></script>
-  <script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
-  <script type="text/javascript" src="plugin/eventreport.js"></script>
-  <script type="text/javascript" src="plugin/eventchart.js"></script>
-  <script type="text/javascript" src="../dhis-web-commons/oust/oust.js"></script>
-  <script type="text/javascript" src="javascript/dashboard.js"></script>
-
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js"></script>
-
-  <script type="text/javascript">
-
-    jQuery( document ).ready( function() {
-      dhis2.leftBar.resetPosition();
-    });
-
-  </script>
   <div id="interpretationPopup">
   </div>
 
@@ -355,6 +343,5 @@
     <td style="width: 25px; text-align: center;"><a href="" class="removeUserGroupAccess">X</a></td>
   </tr>
 </script>
-
 </body>
 </html>
