@@ -19,6 +19,7 @@
   "author": "Viet Nguyen <viet@dhis2.org>",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "script-loader": "^0.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",

@@ -6,7 +6,7 @@ $(function() {
     isNextPage();
   });
 
-  $("#interpretationFeed").load("getInterpretations.action", function() {
+  $("#interpretationFeed").load("../dhis-web-messaging/getInterpretations.action", function() {
     $(".commentArea").autogrow();
   });
 });
@@ -36,7 +36,7 @@ function loadNextPage() {
   pageLock = true;
   currentPage++;
 
-  $.get("getInterpretations.action", { page: currentPage }, function( data ) {
+  $.get("../dhis-web-messaging/getInterpretations.action", { page: currentPage }, function( data ) {
     $("#interpretationFeed").append(data);
 
     if( !isDefined(data) || $.trim(data).length == 0 ) {

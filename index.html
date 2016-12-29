@@ -4,20 +4,8 @@
   <meta name="description" content="DHIS 2">
   <meta name="keywords" content="DHIS 2">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link type="text/css" rel="stylesheet" href="../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen,print" href="../dhis-web-commons/css/light_blue/light_blue.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen,print" href="../dhis-web-commons/css/widgets.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="print" href="../dhis-web-commons/css/print.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/select2/select2.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen" href="style/dashboard.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" media="screen" href="../dhis-web-commons/material-design-icons/material-icons.css?_rev=c8eee8d" />
-  <link type="text/css" rel="stylesheet" href="../api/files/style?_rev=c8eee8d" />
   <link rel="shortcut icon" href="../favicon.ico" />
-  <!-- Material UI fonts -->
-  <link href="../dhis-web-commons/fonts/roboto.css" rel="stylesheet" type="text/css">
-  <link href="../dhis-web-commons/material-design-icons/material-icons.css" rel="stylesheet" type="text/css">
+
   <style>
     html {
       font-size: 14px;
@@ -31,131 +19,72 @@
   <script type="text/javascript">
     var dateFormat = 'yy-mm-dd';
   </script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.min.js?_rev=c8eee8d"></script>
-  <!--[if lte IE 8]><script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=c8eee8d"></script><![endif]-->
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.utils.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.ext.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.metadata.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.tablesorter.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.upload-1.0.2.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.dhisAjaxSelect.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/ui/jquery.blockUI.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.validate.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.validate.ext.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.cookie.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.glob.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.date.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.tmpl.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.autogrow.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.fileupload.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/underscore.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/filesize.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.util.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/commons.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/commons.ajax.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/lists.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/periodType.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/json2.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/validationRules.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.array.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.select.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/moment/moment-with-langs.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/select2/select2.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.period.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.selected.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.comparator.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.availability.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.trigger.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.validation.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.contextmenu.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.appcache.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.translate.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.sharing.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/i18nJavaScript.action?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../main.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../request.js?_rev=c8eee8d"></script>
 
-  <script type="text/javascript" src="../api/files/script?_rev=c8eee8d"></script>
+  <script >
 
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/ext/ext-all.js"></script>
+    function getScript( script, callback ) {
+      var js = document.createElement('script');
+      js.type = 'text/javascript';
+      js.src = script;
+      js.addEventListener('load', function () {
+        if(callback) {callback();}
+      }, false);
 
-  <script type="text/javascript" src="javascript/ejs.min.js"></script>
+      document.getElementsByTagName("head")[0].appendChild(js);
+    }
 
-  <script type="text/javascript" src="javascript/interpretation.js"></script>
+    function getCss( url, media )
+    {
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.type = "text/css";
+      css.href = url;
+      if (media) css.media = media;
+      document.getElementsByTagName("head")[0].appendChild(css);
+    }
 
-  <script type="text/javascript" src="javascript/message.js"></script>
-
-  <script type="text/javascript" src="javascript/profile.js"></script>
-
-  <!-- Menu dependencies -->
-  <script type="text/javascript" src="../dhis-web-core-resource/react-15/react-15.min.js"></script>
-  <script type="text/javascript" src="../dhis-web-core-resource/rxjs/4.1.0/rx.lite.min.js"></script>
-  <script type="text/javascript" src="../dhis-web-core-resource/lodash/4.15.0/lodash.min.js"></script>
-  <script type="text/javascript" src="../dhis-web-core-resource/lodash-functional/lodash-functional.js"></script>
-  <!-- Menu script is up here due to perceived loading time increase -->
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/babel-polyfill.js?_rev=c8eee8d"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/header-bar.js?_rev=c8eee8d"></script>
-
-  <script>
-    // Needs to be wrapped in jQuery to be sure the DOM is parsed as the script is not at the bottom.
-    jQuery(function () {
-      if( Dhis2HeaderBar ){
-        Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
+    function httpGetAsync(theUrl, callback)
+    {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          callback(xmlHttp.responseText);
       }
-    });
+      xmlHttp.open("GET", theUrl, true); // true for asynchronous
+      xmlHttp.send(null);
+    }
+    var revision;
+    httpGetAsync("/api/system/info", function(data){
+      revision = JSON.parse(data).revision;
+
+      getCss("../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=" + revision, null);
+      getCss("../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=" + revision, "screen");
+      getCss("../dhis-web-commons/css/light_blue/light_blue.css?_rev=" + revision, "screen,print");
+      getCss("../dhis-web-commons/css/widgets.css?_rev=" + revision, "screen,print");
+      getCss("../dhis-web-commons/css/print.css?_rev=" + revision , "print");
+      getCss("../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=" + revision,"screen");
+      getCss("../dhis-web-commons/select2/select2.css?_rev=" + revision,"screen");
+      getCss("style/dashboard.css?_rev=" + revision,"screen");
+      getCss("../api/files/style?_rev=" + revision, null);
+
+      <!-- Material UI fonts -->
+      getCss("../dhis-web-commons/fonts/roboto.css?_rev=" + revision,null);
+      getCss("../dhis-web-commons/material-design-icons/material-icons.css?_rev=" + revision, null);
+
+      <!-- Load Javascripts -->
+      getScript("../dhis-web-commons/javascripts/ext/ext-all.js?_rev="  +revision, function(){
+        getScript("../dhis-web-commons/javascripts/jQuery/jquery.min.js?_rev=" + revision, function(){
+             getScript("./app.js?_rev=" + revision);
+            });
+         });
+      });
   </script>
 
-  <!-- DHIS2 Settings initialization for a baseUrl that is used for the menu -->
-  <script>
-    window.dhis2 = window.dhis2 || {};
-    dhis2.settings = dhis2.settings || {};
-    dhis2.settings.baseUrl = '..';
 
 
-  </script>
+  <!--[if lte IE 8]><script> getScript("../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=" + revision);</script><![endif]-->
 
-  <!-- Menu scripts -->
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
 
-  <script type="text/javascript" src="../dhis-web-pivot/reporttable.js"></script>
-  <script type="text/javascript" src="../dhis-web-visualizer/chart.js"></script>
-  <script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
-  <script type="text/javascript" src="plugin/eventreport.js"></script>
-  <script type="text/javascript" src="plugin/eventchart.js"></script>
-  <script type="text/javascript" src="../dhis-web-commons/oust/oust.js"></script>
-
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js"></script>
-
-  <script type="text/javascript" src="./app.js"></script>
-
-  <script type="text/javascript">
-
-    jQuery( document ).ready( function() {
-      dhis2.leftBar.resetPosition();
-    });
-
-  </script>
-
-  <!-- // End menu -->
-
-  <!-- Create global system calendar -->
-  <script>
-    dhis2.period.format = 'yyyy-mm-dd';
-    dhis2.period.calendar = $.calendars.instance('gregorian');
-    dhis2.period.generator = new dhis2.period.PeriodGenerator( dhis2.period.calendar, dhis2.period.format );
-    dhis2.period.picker = new dhis2.period.DatePicker( dhis2.period.calendar, dhis2.period.format );
-  </script>
 
 </head>
 
@@ -182,16 +111,16 @@
 
 
   <div id="dashboardHeader"><h3>
-      <div style="display:none" id="updateProfileCont">
-        <a class="alert" href="../../../dhis-web-user-profile/#/profile" id="i18n_update_profile"></a> &nbsp;&#8226;&nbsp;
-      </div>
+    <div style="display:none" id="updateProfileCont">
+      <a class="alert" href="../../../dhis-web-user-profile/#/profile" id="i18n_update_profile"></a> &nbsp;&#8226;&nbsp;
+    </div>
 
 
     <a href="showSendFeedback.action" id="i18n_write_feedback"></a>
-      <span style="display:none;inline;" id="messageCont">
+    <span style="display:none;inline;" id="messageCont">
       &nbsp;&#8226;&nbsp; <a class="alert" href="../dhis-web-messaging/message.action" id="messageCount"></a>
       </span>
-      <span style="display:none" id="interpretationCont">
+    <span style="display:none" id="interpretationCont">
       &nbsp;&#8226;&nbsp;<a class="alert" href="../dhis-web-messaging/interpretation.action" id="interpretationCount">
       </a>
       </span>
