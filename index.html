@@ -54,7 +54,7 @@
       xmlHttp.send(null);
     }
     var revision;
-    httpGetAsync("/api/system/info", function(data){
+    httpGetAsync("../api/system/info", function(data){
       revision = JSON.parse(data).revision;
 
       getCss("../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=" + revision, null);
