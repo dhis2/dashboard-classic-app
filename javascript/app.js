@@ -111,16 +111,16 @@ jQuery(document).ready(function () {
 
   getInstance()
       .then(d2 => initTranslation(d2))
-      .then(() => mainScripts = mainScripts.map(s => s + "?_rev=" + revision))
-      .then(() => dependentScripts = dependentScripts.map(s => s + "?_rev=" + revision))
+      .then(() => mainScripts = mainScripts.map(s => s + "?_rev=" + cacheBuster))
+      .then(() => dependentScripts = dependentScripts.map(s => s + "?_rev=" + cacheBuster))
       .then(() => runPreLoadScripts())
       .then(() => loadScripts(mainScripts))
       .then(() => loadScripts(dependentScripts))
-      .then(() => loadScript("../dhis-web-pivot/reporttable.js?_rev=" + revision))
-      .then(() => loadScript("../dhis-web-visualizer/chart.js?_rev=" + revision))
-      .then(() => loadScript("../dhis-web-commons/oust/oust.js?_rev=" + revision))
-      .then(() => loadScript("../dhis-web-mapping/map.js?_rev=" + revision))
-      .then(() => loadScript("javascript/dashboard.js?_rev=" + revision))
+      .then(() => loadScript("../dhis-web-pivot/reporttable.js?_rev=" + cacheBuster))
+      .then(() => loadScript("../dhis-web-visualizer/chart.js?_rev=" + cacheBuster))
+      .then(() => loadScript("../dhis-web-commons/oust/oust.js?_rev=" + cacheBuster))
+      .then(() => loadScript("../dhis-web-mapping/map.js?_rev=" + cacheBuster))
+      .then(() => loadScript("javascript/dashboard.js?_rev=" + cacheBuster))
       .then(() => runPostLoadScripts());
 });
 
