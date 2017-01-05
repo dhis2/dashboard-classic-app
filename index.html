@@ -26,6 +26,7 @@
       var js = document.createElement('script');
       js.type = 'text/javascript';
       js.src = script;
+      js.async = false;
       js.addEventListener('load', function () {
         if(callback) {callback();}
       }, false);
@@ -53,38 +54,34 @@
       xmlHttp.open("GET", theUrl, true); // true for asynchronous
       xmlHttp.send(null);
     }
-    var revision;
-    httpGetAsync("../api/system/info", function(data){
-      revision = JSON.parse(data).revision;
+    var cacheBuster = (new Date()).getTime();
+    httpGetAsync("../api/system/info", function(data) {
+      cacheBuster = JSON.parse(data).revision;
+    });
 
-      getCss("../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=" + revision, null);
-      getCss("../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=" + revision, "screen");
-      getCss("../dhis-web-commons/css/light_blue/light_blue.css?_rev=" + revision, "screen,print");
-      getCss("../dhis-web-commons/css/widgets.css?_rev=" + revision, "screen,print");
-      getCss("../dhis-web-commons/css/print.css?_rev=" + revision , "print");
-      getCss("../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=" + revision,"screen");
-      getCss("../dhis-web-commons/select2/select2.css?_rev=" + revision,"screen");
-      getCss("style/dashboard.css?_rev=" + revision,"screen");
-      getCss("../api/files/style?_rev=" + revision, null);
+    getCss("../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=" + cacheBuster, null);
+    getCss("../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=" + cacheBuster, "screen");
+    getCss("../dhis-web-commons/css/light_blue/light_blue.css?_rev=" + cacheBuster, "screen,print");
+    getCss("../dhis-web-commons/css/widgets.css?_rev=" + cacheBuster, "screen,print");
+    getCss("../dhis-web-commons/css/print.css?_rev=" + cacheBuster , "print");
+    getCss("../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=" + cacheBuster,"screen");
+    getCss("../dhis-web-commons/select2/select2.css?_rev=" + cacheBuster,"screen");
+    getCss("style/dashboard.css?_rev=" + cacheBuster,"screen");
+    getCss("../api/files/style?_rev=" + cacheBuster, null);
 
-      <!-- Material UI fonts -->
-      getCss("../dhis-web-commons/fonts/roboto.css?_rev=" + revision,null);
-      getCss("../dhis-web-commons/material-design-icons/material-icons.css?_rev=" + revision, null);
+    <!-- Material UI fonts -->
+    getCss("../dhis-web-commons/fonts/roboto.css?_rev=" + cacheBuster,null);
+    getCss("../dhis-web-commons/material-design-icons/material-icons.css?_rev=" + cacheBuster, null);
 
-      <!-- Load Javascripts -->
-      getScript("../dhis-web-commons/javascripts/ext/ext-all.js?_rev="  +revision, function(){
-        getScript("../dhis-web-commons/javascripts/jQuery/jquery.min.js?_rev=" + revision, function(){
-             getScript("./app.js?_rev=" + revision);
-            });
-         });
-      });
+    <!-- Load Javascripts -->
+    getScript("../dhis-web-commons/javascripts/ext/ext-all.js?_rev="  +cacheBuster, function(){
+      getScript("../dhis-web-commons/javascripts/jQuery/jquery.min.js?_rev=" + cacheBuster, function(){
+           getScript("./app.js?_rev=" + cacheBuster);
+          });
+       });
   </script>
 
-
-
-  <!--[if lte IE 8]><script> getScript("../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=" + revision);</script><![endif]-->
-
-
+  <!--[if lte IE 8]><script> getScript("../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=" + cacheBuster);</script><![endif]-->
 
 </head>
 
