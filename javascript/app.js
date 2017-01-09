@@ -129,18 +129,7 @@ const runPreLoadScripts = function () {
   window.dhis2.settings = window.dhis2.settings || {};
   window.dhis2.settings.baseUrl = '..';
 
-  getCss("../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=" + cacheBuster, null);
-  getCss("../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=" + cacheBuster, "screen");
-  getCss("../dhis-web-commons/css/light_blue/light_blue.css?_rev=" + cacheBuster, "screen,print");
-  getCss("../dhis-web-commons/css/widgets.css?_rev=" + cacheBuster, "screen,print");
-  getCss("../dhis-web-commons/css/print.css?_rev=" + cacheBuster , "print");
-  getCss("../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=" + cacheBuster,"screen");
-  getCss("../dhis-web-commons/select2/select2.css?_rev=" + cacheBuster,"screen");
-  getCss("style/dashboard.css?_rev=" + cacheBuster,"screen");
-  getCss("../api/files/style?_rev=" + cacheBuster, null);
 
-  getCss("../dhis-web-commons/fonts/roboto.css?_rev=" + cacheBuster,null);
-  getCss("../dhis-web-commons/material-design-icons/material-icons.css?_rev=" + cacheBuster, null);
 
 }
 
@@ -238,6 +227,8 @@ const checkProfileFilled = function ( curUser ) {
 }
 
 function initPage() {
+
+
 
   getInstance().then(d2 => {
 
