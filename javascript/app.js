@@ -124,7 +124,6 @@ jQuery(document).ready(function () {
       .then(() => runPostLoadScripts());
 });
 
-
 const runPreLoadScripts = function () {
   window.dhis2 = window.dhis2 || {};
   window.dhis2.settings = window.dhis2.settings || {};
@@ -226,7 +225,6 @@ function loadScript( url ) {
   });
 }
 
-
 const checkProfileFilled = function ( curUser ) {
   let props = [curUser.jobTitle, curUser.introduction, curUser.gender, curUser.birthday,
     curUser.nationality, curUser.employer, curUser.education, curUser.interests, curUser.languages];
@@ -286,8 +284,6 @@ function initPage() {
             jQuery("#updateProfileCont").hide();
           }
         });
-
-
   });
 }
 
