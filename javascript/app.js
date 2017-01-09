@@ -18,7 +18,6 @@ function configI18n( userSettings ) {
   config.i18n.sources.add('./i18n/i18n_module_en.properties');
 }
 
-
 getManifest('./manifest.webapp')
     .then(manifest => {
       const baseUrl = process.env.NODE_ENV === 'production' ? manifest.getBaseUrl() : dhisDevConfig.baseUrl;
@@ -110,9 +109,10 @@ jQuery(document).ready(function () {
   initPage();
 
   getInstance()
-      .then(d2 => initTranslation(d2))
-      .then(() => mainScripts = mainScripts.map(s => s + "?_rev=" + cacheBuster))
-      .then(() => dependentScripts = dependentScripts.map(s => s + "?_rev=" + cacheBuster))
+      .then(d2 => { initTranslation(d2);})
+      .then(() => { mainScripts = mainScripts.map(s => s + "?_rev=" + cacheBuster);
+                    dependentScripts = dependentScripts.map(s => s + "?_rev=" + cacheBuster);
+                  })
       .then(() => runPreLoadScripts())
       .then(() => loadScripts(mainScripts))
       .then(() => loadScripts(dependentScripts))
@@ -129,6 +129,20 @@ const runPreLoadScripts = function () {
   window.dhis2 = window.dhis2 || {};
   window.dhis2.settings = window.dhis2.settings || {};
   window.dhis2.settings.baseUrl = '..';
+
+  getCss("../dhis-web-commons/font-awesome/css/font-awesome.min.css?_rev=" + cacheBuster, null);
+  getCss("../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css?_rev=" + cacheBuster, "screen");
+  getCss("../dhis-web-commons/css/light_blue/light_blue.css?_rev=" + cacheBuster, "screen,print");
+  getCss("../dhis-web-commons/css/widgets.css?_rev=" + cacheBuster, "screen,print");
+  getCss("../dhis-web-commons/css/print.css?_rev=" + cacheBuster , "print");
+  getCss("../dhis-web-commons/javascripts/jQuery/calendars/css/jquery.calendars.picker.css?_rev=" + cacheBuster,"screen");
+  getCss("../dhis-web-commons/select2/select2.css?_rev=" + cacheBuster,"screen");
+  getCss("style/dashboard.css?_rev=" + cacheBuster,"screen");
+  getCss("../api/files/style?_rev=" + cacheBuster, null);
+
+  getCss("../dhis-web-commons/fonts/roboto.css?_rev=" + cacheBuster,null);
+  getCss("../dhis-web-commons/material-design-icons/material-icons.css?_rev=" + cacheBuster, null);
+
 }
 
 const runPostLoadScripts = function () {
@@ -157,14 +171,11 @@ const loadScripts = function ( scripts, callback ) {
   loader.loaded(callback);
 }
 
-
 function ScriptLoader() {
   let promises = [];
   this.add = function ( url ) {
     let promise = new Promise(function ( resolve, reject ) {
       let head = document.getElementsByTagName('head')[0];
-      let scriptIndex = head.getElementsByTagName('script').length;
-      let refScript = head.getElementsByTagName('script')[scriptIndex - 1];
       let script = document.createElement('script');
       script.src = url;
       script.async = false;
@@ -172,7 +183,6 @@ function ScriptLoader() {
 
       script.addEventListener('load', function () {
         resolve(script);
-
       }, false);
 
       script.addEventListener('error', function () {
