@@ -7,10 +7,10 @@ cache:
   - node_modules
 script:
 - npm run build
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: deploy/deploy.sh
+after_success:
+- if ( [ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ] ) && [ "$TRAVIS_REPO_SLUG" == "dhis2/dashboard-app" ]  &&  [ "$TRAVIS_PULL_REQUEST" == "false" ] ; then
+        mvn clean deploy --settings deploy/settings.xml && exit 0;
+  fi
 env:
   global:
   - secure: FmTTvMEbZ16/bo8+NPa4aiokIGzbelYwas4XhTkJHi2KR/JpZ1X+pA/pLx0rkZtt5Il+OI+OAJEsGRj8hMSdUxhOCibSlYHnnDAh9Kfz/qio80/qRZO1d4n+gBZ2EQ2VIASvSYWGG1B1Qq0aUpQ7Y8HGMp3exfMqs+PvRYpGb4mm4ohZeI9lslQEbFyQSofxZ4Pi+7Mu6TtFiR+hz3ESD5uA5c/8c2/YM9Y4Y0XzfiLuHXh/1WVYKnbDi7rfUfygen9pWx4yVyXRM7bmv3wcCUuN4DK8hAbZRsDQBcOJNWwxs9hGcBRZpb0CanCl9hzy5K9kXj61SICp113RAL8rUlUAjrhwHNLNSfYu5HGS8Vb5e8GJEn24PyHLB3EhWlKgPXsFo4E6vWkpnc+gCmEIe2FZna/k/9VmgkMqpmUWkaFC3Zh3Hnl89Onv9mxwJmp3JUXxmoPhXbrsJqCrGdPQSDEALESSj4BgBFwDxWIm84uiqww+pLYMrxbD79H57jWcHWo9gLP8NDE8pxBbc7LXrGLHb1z57Er++ZJ2Y7DRHNtD2XLCEsr2aBIuMtNNB4iLQKLpfWbHaWyKu5dXQEwACkO3rnOJxY6DifRxnGCW59xiJ0amRqp334mVBeXYSe+1XXP+ZCn7axkluxFXV8P27HvuvceMyFK7Ox2eCHWOJNo=
