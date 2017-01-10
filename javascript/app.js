@@ -32,165 +32,17 @@ getManifest('./manifest.webapp')
     .then(init)
     .catch(log.error.bind(log));
 
-let dependentScripts = [
-  "../dhis-web-commons/javascripts/header-bar/header-bar.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.validate.ext.js",
-  "../dhis-web-commons/i18nJavaScript.action",
-  "javascript/interpretation.js",
-  "javascript/message.js",
-  "javascript/profile.js",
-  "../dhis-web-commons/oust/oust.js",
-  "../dhis-web-commons/javascripts/date.js"
-];
 
-let mainScripts = [
-  "../dhis-web-commons/javascripts/jQuery/jquery.validate.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.ext.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.utils.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.metadata.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.tablesorter.min.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.upload-1.0.2.min.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.dhisAjaxSelect.js",
-  "../dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js",
-  "../dhis-web-commons/javascripts/jQuery/ui/jquery.blockUI.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.cookie.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.glob.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.tmpl.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.autogrow.js",
-  "../dhis-web-commons/javascripts/underscore.min.js",
-  "../dhis-web-commons/javascripts/filesize.min.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.util.js",
-  "../dhis-web-commons/javascripts/commons.js",
-  "../dhis-web-commons/javascripts/commons.ajax.js",
-  "../dhis-web-commons/javascripts/lists.js",
-  "../dhis-web-commons/javascripts/periodType.js",
-  "../dhis-web-commons/javascripts/date.js",
-  "../dhis-web-commons/javascripts/json2.js",
-  "../dhis-web-commons/javascripts/validationRules.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.array.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.select.js",
-  "../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js",
-  "../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js",
-  "../dhis-web-commons/javascripts/moment/moment-with-langs.min.js",
-  "../dhis-web-commons/select2/select2.min.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.period.js",
-  "../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.selected.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.comparator.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.availability.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.trigger.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.validation.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.storage.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.contextmenu.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.appcache.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.translate.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.sharing.js",
-  "../main.js",
-  "../request.js",
-  "../api/files/script",
-  "../dhis-web-commons/javascripts/jQuery/jquery.date.js",
-  "../dhis-web-commons/javascripts/jQuery/jquery.fileupload.min.js",
-  "../dhis-web-core-resource/react-15/react-15.min.js",
-  "../dhis-web-core-resource/rxjs/4.1.0/rx.lite.min.js",
-  "../dhis-web-core-resource/lodash/4.15.0/lodash.min.js",
-  "../dhis-web-core-resource/lodash-functional/lodash-functional.js",
-  "../dhis-web-commons/javascripts/header-bar/babel-polyfill.js",
-  "../dhis-web-commons/javascripts/dhis2/dhis2.menu.js",
-  "plugin/eventchart.js",
-  "plugin/eventreport.js"
-];
+Ext.onReady(function(){
+  getInstance()
+      .then(d2 => { initTranslation(d2);})
+      .then(() => loadScript("javascript/dashboard.js?_rev=2.26"))
+});
 
 
 jQuery(document).ready(function () {
   initPage();
-
-  getInstance()
-      .then(d2 => { initTranslation(d2);})
-      .then(() => { mainScripts = mainScripts.map(s => s + "?_rev=" + cacheBuster);
-                    dependentScripts = dependentScripts.map(s => s + "?_rev=" + cacheBuster);
-                  })
-      .then(() => runPreLoadScripts())
-      .then(() => loadScripts(mainScripts))
-      .then(() => loadScripts(dependentScripts))
-      .then(() => loadScript("../dhis-web-pivot/reporttable.js?_rev=" + cacheBuster))
-      .then(() => loadScript("../dhis-web-visualizer/chart.js?_rev=" + cacheBuster))
-      .then(() => loadScript("../dhis-web-commons/oust/oust.js?_rev=" + cacheBuster))
-      .then(() => loadScript("../dhis-web-mapping/map.js?_rev=" + cacheBuster))
-      .then(() => loadScript("javascript/dashboard.js?_rev=" + cacheBuster))
-      .then(() => runPostLoadScripts());
 });
-
-const runPreLoadScripts = function () {
-  window.dhis2 = window.dhis2 || {};
-  window.dhis2.settings = window.dhis2.settings || {};
-  window.dhis2.settings.baseUrl = '..';
-
-
-
-}
-
-const runPostLoadScripts = function () {
-  try {
-    if( 'Dhis2HeaderBar' in window ) {
-      Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, {noLoadingIndicator: true});
-    }
-  } catch( e ) {
-    if( 'console' in window ) {
-      console.error(e);
-    }
-  }
-
-  global.dhis2.period.format = 'yyyy-mm-dd';
-  global.dhis2.period.calendar = jQuery.calendars.instance('gregorian');
-  global.dhis2.period.generator = new global.dhis2.period.PeriodGenerator(global.dhis2.period.calendar, global.dhis2.period.format);
-  global.dhis2.period.picker = new global.dhis2.period.DatePicker(global.dhis2.period.calendar, global.dhis2.period.format);
-  global.dhis2.leftBar.resetPosition();
-}
-
-const loadScripts = function ( scripts, callback ) {
-  let loader = new ScriptLoader();
-  scripts.forEach(function ( script ) {
-    loader.add(script)
-  });
-  loader.loaded(callback);
-}
-
-function ScriptLoader() {
-  let promises = [];
-  this.add = function ( url ) {
-    let promise = new Promise(function ( resolve, reject ) {
-      let head = document.getElementsByTagName('head')[0];
-      let script = document.createElement('script');
-      script.src = url;
-      script.async = false;
-      script.type = 'text/javascript';
-
-      script.addEventListener('load', function () {
-        resolve(script);
-      }, false);
-
-      script.addEventListener('error', function () {
-        reject(script);
-      }, false);
-
-      head.appendChild(script);
-    });
-
-    promises.push(promise);
-  };
-
-  this.loaded = function ( postCallback ) {
-    Promise.all(promises).then(() => {
-      if( postCallback ) {
-        postCallback();
-      }
-    });
-  };
-}
 
 function loadScript( url ) {
 
@@ -227,8 +79,6 @@ const checkProfileFilled = function ( curUser ) {
 }
 
 function initPage() {
-
-
 
   getInstance().then(d2 => {
 
