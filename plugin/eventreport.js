@@ -568,7 +568,7 @@ Ext.onReady( function() {
 				};
 
 				return function() {
-					var objectNames = [],
+					var objectNames = [],
 						dimConf = conf.finals.dimension;
 
 					// config must be an object
@@ -857,7 +857,7 @@ Ext.onReady( function() {
                 var names = [],
                     uniqueItems = [];
 
-                for (var i = 0, item; i < array.length; i++) {
+                for (var i = 0, item; i < array.length; i++) {
                     item = array[i];
 
                     if (!Ext.Array.contains(names, item[property])) {
@@ -972,7 +972,7 @@ Ext.onReady( function() {
                 // object
 			support.prototype.object = {};
 
-			support.prototype.object.getLength = function(object, suppressWarning) {
+			support.prototype.object.getLength = function(object, suppressWarning) {
 				if (!Ext.isObject(object)) {
 					if (!suppressWarning) {
 						console.log('support.prototype.object.getLength: not an object');
@@ -1578,7 +1578,7 @@ Ext.onReady( function() {
 
                                         for (var l = 0, item; l < dim.items.length; l++) {
                                             item = dim.items[l];
-                                            if (item.id === option || item.id === (dim.dimension + option)) {
+                                            if (item.id === option || item.id === (dim.dimension + option)) {
                                                 items.push(item);
                                             }
                                         }
@@ -1590,7 +1590,7 @@ Ext.onReady( function() {
                         }
                     }
                     // no specified legends -> sort by start value
-                    else if (orgDim.legendSet && orgDim.legendSet.id) {
+                    else if (orgDim.legendSet && orgDim.legendSet.id) {
                         for (var j = 0, dim, items; j < dimensions.length; j++) {
                             dim = dimensions[j];
 
@@ -1829,7 +1829,7 @@ Ext.onReady( function() {
 					}
 
                     // set above floor door children to number of unique door ids on this floor
-                    if (i > 0) {
+                    if (i > 0) {
                         aAboveFloorObjects = aaAllFloorObjects[i-1];
                         uniqueDoorIds = Ext.Array.unique(doorIds);
 
@@ -2030,8 +2030,8 @@ Ext.onReady( function() {
 				return layout;
 			};
 
-            service.layout.getDataDimensionsFromLayout = function(layout) {
-                var dimensions = Ext.Array.clean([].concat(layout.columns || [], layout.rows || [], layout.filters || [])),
+            service.layout.getDataDimensionsFromLayout = function(layout) {
+                var dimensions = Ext.Array.clean([].concat(layout.columns || [], layout.rows || [], layout.filters || [])),
                     ignoreKeys = ['pe', 'ou'],
                     dataDimensions = [];
 
@@ -2044,21 +2044,21 @@ Ext.onReady( function() {
                 return dataDimensions;
             };
 
-            service.layout.hasRecordIds = function(layout, recordIds) {
+            service.layout.hasRecordIds = function(layout, recordIds) {
                 var dimensions = Ext.Array.clean([].concat(layout.columns, layout.rows, layout.filters)),
                     ids = [],
                     has = false;
 
-                dimensions.forEach(function(dim) {
-                    if (Ext.isArray(dim.items)) {
-                        dim.items.forEach(function(record) {
+                dimensions.forEach(function(dim) {
+                    if (Ext.isArray(dim.items)) {
+                        dim.items.forEach(function(record) {
                             ids.push(record.id);
                         });
                     }
                 });
 
-                ids.forEach(function(id) {
-                    if (Ext.Array.contains(recordIds, id)) {
+                ids.forEach(function(id) {
+                    if (Ext.Array.contains(recordIds, id)) {
                         has = true;
                     }
                 });
@@ -2520,9 +2520,9 @@ Ext.onReady( function() {
 			// analytics
 			web.analytics = {};
 
-			web.analytics.getParamString = function(view, format, skipPaging) {
+			web.analytics.getParamString = function(view, format, skipPaging) {
                 var paramString,
-                    dimensions = Ext.Array.clean([].concat(view.columns || [], view.rows || [])),
+                    dimensions = Ext.Array.clean([].concat(view.columns || [], view.rows || [])),
                     ignoreKeys = ['dy', 'longitude', 'latitude'],
                     dataTypeMap = {},
                     nameItemsMap,
@@ -2554,7 +2554,7 @@ Ext.onReady( function() {
 
                 // dimensions
                 if (dimensions) {
-					for (var i = 0, dim; i < dimensions.length; i++) {
+					for (var i = 0, dim; i < dimensions.length; i++) {
 						dim = dimensions[i];
 
 						if (Ext.Array.contains(ignoreKeys, dim.dimension) || (dim.dimension === 'pe' && (!(dim.items && dim.items.length) && !dim.filter))) {
@@ -2587,7 +2587,7 @@ Ext.onReady( function() {
 
                 // filters
                 if (view.filters) {
-					for (var i = 0, dim; i < view.filters.length; i++) {
+					for (var i = 0, dim; i < view.filters.length; i++) {
 						dim = view.filters[i];
 
                         paramString += '&filter=' + dim.dimension;
@@ -2676,7 +2676,7 @@ Ext.onReady( function() {
                 }
 
                 // user / relative orgunit
-                if (hasRelativeOrgunits) {
+                if (hasRelativeOrgunits) {
                     paramString += '&user=' + init.userAccount.id;
                 }
 
@@ -3140,7 +3140,7 @@ Ext.onReady( function() {
 							uuid = Ext.data.IdGenerator.get('uuid').generate();
 
 							// get uuids array from colaxis/rowaxis leaf
-							if (xColAxis) {
+							if (xColAxis) {
 								uuids = uuids.concat(xColAxis.objects.all[xColAxis.dims - 1][j].uuids);
 							}
 							if (xRowAxis) {
@@ -3523,7 +3523,7 @@ Ext.onReady( function() {
 						a = [];
 
 					if (doColTotals()) {
-						if (xRowAxis) {
+						if (xRowAxis) {
 							dimTotalArray = [getTdHtml({
 								type: 'dimensionSubtotal',
 								cls: 'pivot-dim-total',
@@ -3675,7 +3675,7 @@ Ext.onReady( function() {
 		}());
 
 		// extend init
-		(function() {
+		(function() {
 
 			// sort and extend dynamic dimensions
 			if (Ext.isArray(init.dimensions)) {
@@ -4167,7 +4167,7 @@ Ext.onReady( function() {
                     console.log(obj.id, (r.responseText ? Ext.decode(r.responseText) : r));
                 };
 
-                config.url = init.contextPath + '/api/eventReports/' + obj.id + '.' + type + '?fields=' + conf.url.analysisFields.join(',');
+                config.url = encodeURI(init.contextPath + '/api/eventReports/' + obj.id + '.' + type + '?fields=' + conf.url.analysisFields.join(','));
                 config.disableCaching = false;
                 config.headers = headers;
                 config.success = success;
@@ -4202,7 +4202,7 @@ Ext.onReady( function() {
                     //if (response) {
 
                     // add to dimConf, TODO
-                    for (var i = 0, map = dimConf.objectNameMap, header; i < response.headers.length; i++) {
+                    for (var i = 0, map = dimConf.objectNameMap, header; i < response.headers.length; i++) {
                         header = response.headers[i];
 
                         map[header.name] = map[header.name] || {
@@ -4377,7 +4377,7 @@ Ext.onReady( function() {
                         getReport();
                     };
 
-                    getXResponse = function() {
+                    getXResponse = function() {
                         xLayout = service.layout.getExtendedLayout(layout);
                         xResponse = service.response.aggregate.getExtendedResponse(xLayout, response);
 
