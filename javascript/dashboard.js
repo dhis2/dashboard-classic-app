@@ -258,7 +258,7 @@ dhis2.db.openAddDashboardForm = function () {
         width: 415,
         height: 100,
         resizable: false,
-        title: "Add new dashboard"
+        title: i18n_add_new_dashboard
     });
 }
 
@@ -270,7 +270,7 @@ dhis2.db.openManageDashboardForm = function () {
             $("#manageDashboardForm").dialog({
                 autoOpen: true,
                 modal: true,
-                width: 405,
+                width: 480,
                 height: 430,
                 resizable: false,
                 title: name
@@ -766,7 +766,7 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender) {
         });
     }
     else if ("USERS" == dashboardItem.type) {
-        dhis2.db.renderLinkItem($d, dashboardItem.id, dashboardItem.users, "Users", "../dhis-web-messaging/profile.action?id=", "");
+        dhis2.db.renderLinkItem($d, dashboardItem.id, dashboardItem.users, "Users" , "../dhis-web-messaging/profile.action?id=", "");
     }
     else if ("REPORTS" == dashboardItem.type) {
         dhis2.db.renderLinkItem($d, dashboardItem.id, dashboardItem.reports, "Reports", "../dhis-web-reporting/getReportParams.action?mode=report&uid=", "");
@@ -1173,7 +1173,7 @@ dhis2.db.renderSearch = function (data, $h) {
     if (data.searchCount > 0) {
         if (data.userCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Users",
+                "title": i18n_users,
                 "type": "USERS",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1217,7 +1217,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.eventChartCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Event charts",
+                "title": i18n_event_charts,
                 "type": "EVENT_CHART",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1239,7 +1239,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.mapCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Maps",
+                "title": i18n_maps,
                 "type": "MAP",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1261,7 +1261,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.reportTableCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Pivot tables",
+                "title": i18n_pivot_tables,
                 "type": "REPORT_TABLE",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1283,7 +1283,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.eventReportCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Event reports",
+                "title": i18n_event_reports,
                 "type": "EVENT_REPORT",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1305,7 +1305,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.reportCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Standard reports",
+                "title": i18n_standard_reports,
                 "type": "REPORTS",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1327,7 +1327,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.resourceCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Resources",
+                "title": i18n_resources,
                 "type": "RESOURCES",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1349,7 +1349,7 @@ dhis2.db.renderSearch = function (data, $h) {
 
         if (data.appCount > 0) {
             $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {
-                "title": "Apps",
+                "title": i18n_apps,
                 "type": "APP",
                 "i18n_see_more_hits": i18n_see_more_hits,
                 "i18n_see_fewer_hits": i18n_see_fewer_hits
@@ -1370,6 +1370,7 @@ dhis2.db.renderSearch = function (data, $h) {
         }
     }
     else {
+        //TODO i18n this
         $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {"title": "No results found"}));
     }
 }
@@ -1436,7 +1437,7 @@ dhis2.db.showShareHelp = function () {
         modal: true,
         width: 380,
         resizable: false,
-        title: "Share your data interpretations"
+        title: i18n_share_your_data_interpretations
     });
 }
 

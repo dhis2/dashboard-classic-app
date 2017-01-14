@@ -155,6 +155,15 @@ const initTranslation = function ( d2 ) {
   global.i18n_applies_to_favorites_with_user_org_units_only = d2.i18n.getTranslation("applies_to_favorites_with_user_org_units_only");
   global.i18n_missing_dashboard_app = d2.i18n.getTranslation("missing_dashboard_app");
   global.i18n_update_profile = d2.i18n.getTranslation("update_profile");
+  global.i18n_add_new_dashboard =  d2.i18n.getTranslation("add_new_dashboard");
+  global.i18n_users = d2.i18n.getTranslation("users");
+  global.i18n_event_charts = d2.i18n.getTranslation("event_charts");
+  global.i18n_maps = d2.i18n.getTranslation("maps");
+  global.i18n_event_reports = d2.i18n.getTranslation("event_reports");
+  global.i18n_standard_reports = d2.i18n.getTranslation("standard_reports");
+  global.i18n_resources = d2.i18n.getTranslation("resources");
+  global.i18n_apps = d2.i18n.getTranslation("apps");
+  global.i18n_share_your_data_interpretations = d2.i18n.getTranslation("share_your_data_intepretations");
 
   jQuery("#i18n_update_profile").html(d2.i18n.getTranslation("update_profile"));
   jQuery("#i18n_write_feedback").html(d2.i18n.getTranslation("write_feedback"));
