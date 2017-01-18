@@ -155,6 +155,8 @@ const initTranslation = function ( d2 ) {
   global.i18n_applies_to_favorites_with_user_org_units_only = d2.i18n.getTranslation("applies_to_favorites_with_user_org_units_only");
   global.i18n_missing_dashboard_app = d2.i18n.getTranslation("missing_dashboard_app");
   global.i18n_update_profile = d2.i18n.getTranslation("update_profile");
+  global.i18n_can_edit_and_view = d2.i18n.getTranslation("can_edit_and_view");
+  global.i18n_can_view = d2.i18n.getTranslation("can_view");
 
   jQuery("#i18n_update_profile").html(d2.i18n.getTranslation("update_profile"));
   jQuery("#i18n_write_feedback").html(d2.i18n.getTranslation("write_feedback"));
@@ -194,9 +196,9 @@ const initTranslation = function ( d2 ) {
   jQuery("#i18n_created_by").html(d2.i18n.getTranslation("created_by") + ":");
   jQuery("#i18n_external_access").html(d2.i18n.getTranslation("external_access"));
   jQuery("#i18n_public_access").html(d2.i18n.getTranslation("public_access"));
-  jQuery("[name='i18n_can_view']").html(d2.i18n.getTranslation("can_view"));
+  jQuery("[name='i18n_can_view']").html(global.i18n_can_view);
+  jQuery("[name='i18n_can_edit_and_view']").html(global.i18n_can_edit_and_view);
   jQuery("#i18n_none").html(d2.i18n.getTranslation("none"));
-  jQuery("[name='i18n_can_edit_and_view']").html(d2.i18n.getTranslation("can_edit_and_view"));
   jQuery("#i18n_interpretations").html(d2.i18n.getTranslation("interpretations"));
   jQuery("[name='i18n_interpretations']").html(d2.i18n.getTranslation("interpretations"));
   jQuery("#interpretationArea").attr({"placeholder": d2.i18n.getTranslation("write_your_interpretation")});
