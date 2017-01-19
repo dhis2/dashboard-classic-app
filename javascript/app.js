@@ -157,6 +157,8 @@ const initTranslation = function ( d2 ) {
   global.i18n_update_profile = d2.i18n.getTranslation("update_profile");
   global.i18n_can_edit_and_view = d2.i18n.getTranslation("can_edit_and_view");
   global.i18n_can_view = d2.i18n.getTranslation("can_view");
+  global.i18n_cancel = d2.i18n.getTranslation("cancel");
+  global.i18n_save = d2.i18n.getTranslation("save");
 
   jQuery("#i18n_update_profile").html(d2.i18n.getTranslation("update_profile"));
   jQuery("#i18n_write_feedback").html(d2.i18n.getTranslation("write_feedback"));
