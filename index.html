@@ -138,12 +138,6 @@
   <script type="text/javascript" src="../dhis-web-commons/javascripts/date.js?_rev=2.26"></script>
 
 
-  <script type="text/javascript">
-    jQuery( document ).ready( function() {
-      dhis2.leftBar.resetPosition();
-    });
-  </script>
-
 
 
 </head>
@@ -155,6 +149,13 @@
 
   <div id="dhisDropDownMenu"></div>
 </div>
+
+<script>
+  if( Dhis2HeaderBar ){
+    Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
+  }
+</script>
+
 <span id="showLeftBar">
       <a href="javascript:dhis2.leftBar.showAnimated()" name="i18n_show_menu">
         <i class="fa fa-arrow-right leftBarIcon"></i>
@@ -162,6 +163,13 @@
     </span>
 
 <div id="headerMessage" class="bold"></div>
+
+<script type="text/javascript">
+  jQuery( document ).ready( function() {
+    dhis2.leftBar.resetPosition();
+  });
+</script>
+
 
 <div class="page" id="mainPage"> <!-- Do not set style attr -->
 
@@ -333,12 +341,6 @@
 </script>
 
 
-
-<script>
-    if( Dhis2HeaderBar ){
-      Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
-    }
-</script>
 
 
 </body>
