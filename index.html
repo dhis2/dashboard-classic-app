@@ -60,16 +60,6 @@
   <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js?_rev=2.26"></script>
 
 
-  <script>
-    // Needs to be wrapped in jQuery to be sure the DOM is parsed as the script is not at the bottom.
-    jQuery(document).ready(function () {
-      if( Dhis2HeaderBar ){
-        Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
-      }
-    });
-  </script>
-
-
 
   <!--[if lte IE 8]><script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/placeholders.jquery.min.js?_rev=2.26"></script><![endif]-->
   <script type="text/javascript" src="../dhis-web-commons/javascripts/jQuery/jquery.utils.js?_rev=2.26"></script>
@@ -189,7 +179,7 @@
       &nbsp;&#8226;&nbsp; <a class="alert" href="../dhis-web-messaging/message.action" id="messageCount"></a>
       </span>
     <span style="display:none" id="interpretationCont">
-      &nbsp;&#8226;&nbsp;<a class="alert" href="../dhis-web-messaging/interpretation.action" id="interpretationCount">
+      &nbsp;&#8226;&nbsp;<a class="alert" href="../dhis-web-interpretation/index.html" id="interpretationCount">
       </a>
       </span>
     &nbsp;&#8226;&nbsp; <span id="dashboardTitle"></span>
@@ -198,7 +188,7 @@
   <div id="dashboardMenu" class="horizontalMenu">
     <ul>
       <li><a class="greyButtonLink" href="../dhis-web-messaging/message.action" name="i18n_messages"></a></li>
-      <li><a class="greyButtonLink" href="../dhis-web-messaging/interpretation.action" name="i18n_interpretations"></a></li>
+      <li><a class="greyButtonLink" href="../dhis-web-interpretation/index.html" name="i18n_interpretations"></a></li>
     </ul>
   </div>
 
@@ -340,6 +330,14 @@
     </td>
     <td style="width: 25px; text-align: center;"><a href="" class="removeUserGroupAccess">X</a></td>
   </tr>
+</script>
+
+
+
+<script>
+    if( Dhis2HeaderBar ){
+      Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
+    }
 </script>
 
 
