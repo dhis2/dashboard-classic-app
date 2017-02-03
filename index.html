@@ -53,11 +53,24 @@
   <script type="text/javascript" src="../dhis-web-commons/javascripts/header-bar/header-bar.js?_rev=2.26"></script>
   <!-- // End menu -->
 
+  <script>
+    // Needs to be wrapped in jQuery to be sure the DOM is parsed as the script is not at the bottom.
+    jQuery(function () {
+      try {
+        if ('Dhis2HeaderBar' in window) {
+          Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, {noLoadingIndicator: true});
+        }
+      } catch (e) {
+        if ('console' in window ) {
+          console.error(e);
+        }
+      }
+    });
+  </script>
 
   <!-- Menu scripts -->
   <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.translate.js?_rev=2.26"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.js?_rev=2.26"></script>
-  <script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js?_rev=2.26"></script>
+
 
 
 
@@ -150,11 +163,7 @@
   <div id="dhisDropDownMenu"></div>
 </div>
 
-<script>
-  if( Dhis2HeaderBar ){
-    Dhis2HeaderBar.initHeaderBar(document.querySelector('#header'), undefined, { noLoadingIndicator: true });
-  }
-</script>
+
 
 <span id="showLeftBar">
       <a href="javascript:dhis2.leftBar.showAnimated()" name="i18n_show_menu">
