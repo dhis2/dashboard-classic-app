@@ -194,7 +194,7 @@ const initTranslation = function ( d2 ) {
   jQuery("#i18n_translate_current_dashboard").html(d2.i18n.getTranslation("translate_current_dashboard"));
 
   jQuery("#sharingSettings").attr({"title": d2.i18n.getTranslation("sharing_settings")});
-  jQuery("#sharingFindUserGroup").attr({"placeholder": d2.i18n.getTranslation("search_for_user_groups")});
+  jQuery("#sharingSearch").attr({"placeholder": d2.i18n.getTranslation("search_for_user_groups")});
   jQuery("#i18n_created_by").html(d2.i18n.getTranslation("created_by") + ":");
   jQuery("#i18n_external_access").html(d2.i18n.getTranslation("external_access"));
   jQuery("#i18n_public_access").html(d2.i18n.getTranslation("public_access"));
