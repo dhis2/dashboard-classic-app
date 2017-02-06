@@ -4,10 +4,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    config: {
-      src: 'index.html',
-      dist: 'build/'
-    },
     'string-replace': {
       dist: {
         files: {
