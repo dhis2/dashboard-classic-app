@@ -168,6 +168,7 @@ const initTranslation = function ( d2 ) {
   global.i18n_can_view = d2.i18n.getTranslation("can_view");
   global.i18n_cancel = d2.i18n.getTranslation("cancel");
   global.i18n_save = d2.i18n.getTranslation("save");
+  global.i18n_pivot_tables= d2.i18n.getTranslation("pivot_tables");
 
 
   jQuery("#i18n_update_profile").html(d2.i18n.getTranslation("update_profile"));
@@ -204,7 +205,7 @@ const initTranslation = function ( d2 ) {
   jQuery("#i18n_translate_current_dashboard").html(d2.i18n.getTranslation("translate_current_dashboard"));
 
   jQuery("#sharingSettings").attr({"title": d2.i18n.getTranslation("sharing_settings")});
-  jQuery("#sharingFindUserGroup").attr({"placeholder": d2.i18n.getTranslation("search_for_user_groups")});
+  jQuery("#sharingSearch").attr({"placeholder": d2.i18n.getTranslation("search_for_user_groups")});
   jQuery("#i18n_created_by").html(d2.i18n.getTranslation("created_by") + ":");
   jQuery("#i18n_external_access").html(d2.i18n.getTranslation("external_access"));
   jQuery("#i18n_public_access").html(d2.i18n.getTranslation("public_access"));
