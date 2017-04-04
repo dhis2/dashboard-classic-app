@@ -34,6 +34,7 @@ dhis2.db.itemContentHeight = 317;
 dhis2.db.itemScrollbarWidth = /\bchrome\b/.test(navigator.userAgent.toLowerCase()) ? 8 : 17;
 dhis2.db.reportTableItems = [];
 dhis2.db.chartItems = [];
+dhis2.db.eventReportItems = [];
 
 // TODO support table as link and embedded
 // TODO double horizontal size
@@ -111,7 +112,7 @@ dhis2.db.tmpl = {
     eventReportItem: "<li id='liDrop-${itemId}' class='liDropItem'><div class='dropItem' id='drop-${itemId}' data-item='${itemId}'></div></li>" +
     "<li id='li-${itemId}' class='liItem'><div class='item' id='${itemId}' style='${style}'><div class='itemHeader'>" +
     "<a href='javascript:dhis2.db.exploreEventReport( \"${id}\" )'>${i18n_explore}</a>|" +
-    "<a href='javascript:dhis2.db.resizeItem( \"${itemId}\", true )'>${i18n_resize}</a>|" +
+    "<a href='javascript:dhis2.db.resizeItem( \"${itemId}\" )'>${i18n_resize}</a>|" +
     "<a href='javascript:dhis2.db.viewShareForm( \"${id}\", \"eventReport\", \"${name}\" )'>${i18n_share}</a>|" +
     "<a href='javascript:dhis2.db.removeItem( \"${itemId}\" )'>${i18n_remove}</a>" +
     "{{if interpretationCount > 0}}<a href='#' onclick='dhis2.db.showInterpretationPopup( event, \"${id}\", \"EVENT_REPORT\" );return false;' title=\"${interpretationCount} interpretations\"><i class=\"fa fa-comments-o\"></i>${interpretationCount}</a>{{/if}}" +
@@ -531,6 +532,7 @@ dhis2.db.renderDashboard = function (id) {
 
     dhis2.db.reportTableItems = [];
     dhis2.db.chartItems = [];
+    dhis2.db.eventReportItems = [];
 
     var fullWidth = dhis2.db.getFullWidth();
 
@@ -540,7 +542,7 @@ dhis2.db.renderDashboard = function (id) {
 
     $("#dashboard-" + dhis2.db.current()).addClass("currentDashboard");
 
-    $.getJSON("../api/dashboards/" + id + "?fields=:all,dashboardItems[:all,reports[id,displayName],chart[id,displayName],map[id,displayName],reportTable[id,displayName],resources[id,displayName],users[id,displayName]]&" + dhis2.util.cacheBust(), function (data) {
+    $.getJSON("../api/dashboards/" + id + "?fields=:all,dashboardItems[:all,reports[id,displayName],chart[id,displayName],map[id,displayName],reportTable[id,displayName],eventReport[id,displayName],resources[id,displayName],users[id,displayName]]&" + dhis2.util.cacheBust(), function (data) {
         $( "#dashboardTitle" ).html( data.displayName );
         $d = $("#contentList").empty();
 
@@ -575,6 +577,12 @@ dhis2.db.renderDashboard = function (id) {
             chartPlugin.dashboard = true;
             chartPlugin.showTitles = true;
             chartPlugin.load(dhis2.db.chartItems);
+
+            // event report
+            eventReportPlugin.url = '..';
+            eventReportPlugin.dashboard = true;
+            eventReportPlugin.showTitles = true;
+            eventReportPlugin.load(dhis2.db.eventReportItems);
 
             dhis2.db.renderLastDropItem($d);
         }
@@ -745,6 +753,7 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender) {
         }
     }
     else if ("EVENT_REPORT" == dashboardItem.type) {
+        var pluginItems = dhis2.db.eventReportItems;
         var content = $.tmpl(dhis2.db.tmpl.eventReportItem, {
             "itemId": dashboardItem.id,
             "id": dashboardItem.eventReport.id,
@@ -758,17 +767,21 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender) {
         });
         dhis2.db.preOrAppend($d, content, prepend);
 
-        DHIS.getEventReport({
+        var pluginItem = {
             url: '..',
             el: 'plugin-' + dashboardItem.id,
             id: dashboardItem.eventReport.id,
-            dashboard: true,
-            crossDomain: false,
-            skipMask: true,
-            displayDensity: 'compact',
-            fontSize: 'small',
+            displayDensity: 'COMPACT',
+            fontSize: 'SMALL',
             userOrgUnit: userOrgUnit
-        });
+        };
+
+        if (autoRender) {
+            eventReportPlugin.load(pluginItem);
+        }
+        else {
+            pluginItems.push(pluginItem);
+        }
     }
     else if ("USERS" == dashboardItem.type) {
         dhis2.db.renderLinkItem($d, dashboardItem.id, dashboardItem.users, "Users" , "../dhis-web-messaging/profile.action?id=", "");
