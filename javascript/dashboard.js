@@ -35,6 +35,7 @@ dhis2.db.itemScrollbarWidth = /\bchrome\b/.test(navigator.userAgent.toLowerCase(
 dhis2.db.reportTableItems = [];
 dhis2.db.chartItems = [];
 dhis2.db.eventReportItems = [];
+dhis2.db.eventChartItems = [];
 
 // TODO support table as link and embedded
 // TODO double horizontal size
@@ -533,6 +534,7 @@ dhis2.db.renderDashboard = function (id) {
     dhis2.db.reportTableItems = [];
     dhis2.db.chartItems = [];
     dhis2.db.eventReportItems = [];
+    dhis2.db.eventChartItems = [];
 
     var fullWidth = dhis2.db.getFullWidth();
 
@@ -542,7 +544,7 @@ dhis2.db.renderDashboard = function (id) {
 
     $("#dashboard-" + dhis2.db.current()).addClass("currentDashboard");
 
-    $.getJSON("../api/dashboards/" + id + "?fields=:all,dashboardItems[:all,reports[id,displayName],chart[id,displayName],map[id,displayName],reportTable[id,displayName],eventReport[id,displayName],resources[id,displayName],users[id,displayName]]&" + dhis2.util.cacheBust(), function (data) {
+    $.getJSON("../api/dashboards/" + id + "?fields=:all,dashboardItems[:all,reports[id,displayName],chart[id,displayName],map[id,displayName],reportTable[id,displayName],eventReport[id,displayName],eventChart[id,displayName],resources[id,displayName],users[id,displayName]]&" + dhis2.util.cacheBust(), function (data) {
         $( "#dashboardTitle" ).html( data.displayName );
         $d = $("#contentList").empty();
 
@@ -583,6 +585,12 @@ dhis2.db.renderDashboard = function (id) {
             eventReportPlugin.dashboard = true;
             eventReportPlugin.showTitles = true;
             eventReportPlugin.load(dhis2.db.eventReportItems);
+
+            // event chart
+            eventChartPlugin.url = '..';
+            eventChartPlugin.dashboard = true;
+            eventChartPlugin.showTitles = true;
+            eventChartPlugin.load(dhis2.db.eventChartItems);
 
             dhis2.db.renderLastDropItem($d);
         }
@@ -646,6 +654,7 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender) {
         }
     }
     else if ("EVENT_CHART" == dashboardItem.type) {
+        var pluginItems = dhis2.db.eventChartItems;
         var content = $.tmpl(dhis2.db.tmpl.eventChartItem, {
             "itemId": dashboardItem.id,
             "id": dashboardItem.eventChart.id,
@@ -661,36 +670,19 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender) {
         });
         dhis2.db.preOrAppend($d, content, prepend);
 
-        DHIS.getEventChart({
+        var pluginItem = {
             url: '..',
             el: 'plugin-' + dashboardItem.id,
             id: dashboardItem.eventChart.id,
-            width: width,
-            height: dhis2.db.itemContentHeight,
-            dashboard: true,
-            crossDomain: false,
-            skipMask: true,
-            userOrgUnit: userOrgUnit,
-            domainAxisStyle: {
-                labelRotation: 45,
-                labelFont: '10px sans-serif',
-                labelColor: '#111'
-            },
-            rangeAxisStyle: {
-                labelFont: '9px sans-serif'
-            },
-            legendStyle: {
-                labelFont: 'normal 10px sans-serif',
-                labelColor: '#222',
-                labelMarkerSize: 10,
-                titleFont: 'bold 12px sans-serif',
-                titleColor: '#333'
-            },
-            seriesStyle: {
-                labelColor: '#333',
-                labelFont: '9px sans-serif'
-            }
-        });
+            userOrgUnit: userOrgUnit
+        };
+
+        if (autoRender) {
+            eventChartPlugin.load(pluginItem);
+        }
+        else {
+            pluginItems.push(pluginItem);
+        }
     }
     else if ("MAP" == dashboardItem.type) {
         var content = $.tmpl(dhis2.db.tmpl.mapItem, {
