@@ -1381,7 +1381,7 @@ dhis2.db.renderSearch = function (data, $h) {
     }
     else {
         //TODO i18n this
-        $h.append($.tmpl(dhis2.db.tmpl.hitHeader, {"title": "No results found"}));
+        $h.append($.tmpl(dhis2.db.tmpl.hitHeader,  { "title" : i18n_no_results_found }));
     }
 }
 
