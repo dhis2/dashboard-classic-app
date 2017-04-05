@@ -1,0 +1,22 @@
+{
+  "launch_path": "index.html",
+  "default_locale": "en",
+  "activities": {
+    "dhis": {
+      "href": ".."
+    }
+  },
+  "appType": "APP",
+  "name": "Dashboard App",
+  "version": "0.1.9q
+",
+  "description": "DHIS2 Dashboard App",
+  "developer": {
+    "name": "Viet Nguyen",
+    "email": "viet@dhis2.org"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "manifest_generated_at": "Tue Apr 04 2017 14:59:19 GMT+0200 (CEST)"
+}
