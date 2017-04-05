@@ -169,6 +169,7 @@ const initTranslation = function ( d2 ) {
   global.i18n_cancel = d2.i18n.getTranslation("cancel");
   global.i18n_save = d2.i18n.getTranslation("save");
   global.i18n_pivot_tables= d2.i18n.getTranslation("pivot_tables");
+  global.i18n_no_results_found = d2.i18n.getTranslation("no_results_found");
 
 
   jQuery("#i18n_update_profile").html(d2.i18n.getTranslation("update_profile"));
