@@ -608,7 +608,7 @@ dhis2.db.renderDashboard = function (id) {
 dhis2.db.linkItemHeaderHtml = function (itemId, title) {
     var html =
         "<li id='liDrop-" + itemId + "' class='liDropItem'><div class='dropItem' id='drop-" + itemId + "' data-item='" + itemId + "'></div></li>" +
-        "<li id='li-" + itemId + "' class='liItem'><div class='item' id='" + itemId + "'><div class='itemHeader'><a href='javascript:dhis2.db.removeItem( \"" + itemId + "\" )'>" + i18n_remove + "</a></div>" +
+        "<li id='li-" + itemId + "' class='liItem'><div class='item' id='" + itemId + "' style='width:" + dhis2.db.widthNormal + "'><div class='itemHeader'><a href='javascript:dhis2.db.removeItem( \"" + itemId + "\" )'>" + i18n_remove + "</a></div>" +
         "<ul id='ul-" + itemId + "' class='itemList'><li class='itemTitle' title='" + i18n_drag_to_new_position + "'>" + title + "</li>";
 
     return html;
@@ -878,7 +878,7 @@ dhis2.db.getMessageHtml = function (message) {
         return (message.messageCount > 1 ? "(" + message.messageCount + ")" : "");
     }
 
-    return "<li class='message-item'> <a href='readMessage.action?id=" + message.id + "' class='" + (message.read ? "" : "bold") +
+    return "<li class='message-item'> <a href='../dhis-web-messaging/readMessage.action?id=" + message.id + "' class='" + (message.read ? "" : "bold") +
         "'> <div> <span>" + getSender() + " " + getCount() + "</span> <span class='tipText' style='float:right'>" + message.lastMessage +
         "</span> </div> <div> <span>" + message.name + "</span> </div> </a> </li>";
 }

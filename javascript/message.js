@@ -21,7 +21,7 @@ function toggleRowSelected( element )
 
 function read( id )
 {
-    window.location.href = "readMessage.action?id=" + id;
+    window.location.href = "../dhis-web-messaging/readMessage.action?id=" + id;
 }
 
 function userCount() {
@@ -90,7 +90,7 @@ function sendReply()
 
     $.postUTF8( "sendReply.action", { id: id, text: text, internal: false }, function()
     {
-        window.location.href = "readMessage.action?id=" + id;
+        window.location.href = "../dhis-web-messaging/readMessage.action?id=" + id;
     } );
 }
 
@@ -110,7 +110,7 @@ function sendInternalReply()
     setHeaderWaitMessage( i18n_sending_message );
 
     $.postUTF8("sendReply.action", {id: id, text: text, internal: internal}, function () {
-        window.location.href = "readMessage.action?id=" + id;
+        window.location.href = "../dhis-web-messaging/readMessage.action?id=" + id;
     });
 
 }
