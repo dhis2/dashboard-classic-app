@@ -1212,7 +1212,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../dhis-web-visualizer/index.html?id=" + o.id,
                     "img": "chart_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "CHART",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1234,7 +1234,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../dhis-web-event-visualizer/index.html?id=" + o.id,
                     "img": "chart_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "EVENT_CHART",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1256,7 +1256,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../dhis-web-mapping/index.html?id=" + o.id,
                     "img": "map_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "MAP",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1278,7 +1278,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../dhis-web-pivot/index.html?id=" + o.id,
                     "img": "table_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "REPORT_TABLE",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1300,7 +1300,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../dhis-web-event-reports/index.html?id=" + o.id,
                     "img": "table_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "EVENT_REPORT",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1322,7 +1322,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../dhis-web-reporting/getReportParams.action?uid=" + o.id,
                     "img": "standard_report_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "REPORTS",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1344,7 +1344,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../api/documents/" + o.id,
                     "img": "document_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "RESOURCES",
                     "id": o.id,
                     "i18n_add": i18n_add
@@ -1366,7 +1366,7 @@ dhis2.db.renderSearch = function (data, $h) {
                     "canManage": canManage,
                     "link": "../api/apps/" + o.key,
                     "img": "app_small",
-                    "name": o.name,
+                    "name": o.displayName,
                     "type": "APP",
                     "id": o.key,
                     "i18n_add": i18n_add
