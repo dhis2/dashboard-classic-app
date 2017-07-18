@@ -330,7 +330,7 @@
   display: none;
 }
 
-#newInterpretation {
+#interpretationPopup #newInterpretation  {
   display: block;
   color: #3162C5;
   margin-top: 5px;
