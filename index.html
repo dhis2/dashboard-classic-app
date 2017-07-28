@@ -216,20 +216,24 @@
 
   <div id="cogButton"><a class="greyButtonLink" href="javascript:dhis2.db.viewOrgUnitSelector()"><i class="fa fa-cog"></i></a></div>
 
-  <div id="dashboardControl" class="horizontalMenu dashboardList">
-    <ul>
-      <li><a class='bold' href='javascript:dhis2.db.openAddDashboardForm()' ><label id="i18n_add"></label></a></li>
-      <li id="manageDashboard"><a class='bold' name="i18n_manage"></a></li>
-      <li id="manageSharing"><a class='bold' name="i18n_share"></a></li>
-      <li><a class='bold' href='javascript:dhis2.db.scrollLeft()' title='$i18n.getString( "previous" )'>&lt;</a></li>
-      <li><a class='bold' href='javascript:dhis2.db.scrollRight()' title='$i18n.getString( "next" )'>&gt;</a></li>
-    </ul>
-  </div>
+  <div style="display: inline-grid;margin-top: 48px;position: relative;">
 
-  <div id="dashboardListContainer" class="horizontalMenu">
-    <div id="dashboardListWrapper" class="dashboardList">
-      <ul id="dashboardList"></ul>
+    <div id="dashboardControl" class="horizontalMenu dashboardList">
+      <ul>
+        <li><a class='bold' href='javascript:dhis2.db.openAddDashboardForm()' ><label id="i18n_add"></label></a></li>
+        <li id="manageDashboard"><a class='bold' name="i18n_manage"></a></li>
+        <li id="manageSharing"><a class='bold' name="i18n_share"></a></li>
+        <li><a class='bold' href='javascript:dhis2.db.scrollLeft()' title='$i18n.getString( "previous" )'>&lt;</a></li>
+        <li><a class='bold' href='javascript:dhis2.db.scrollRight()' title='$i18n.getString( "next" )'>&gt;</a></li>
+      </ul>
     </div>
+
+    <div id="dashboardListContainer" class="horizontalMenu">
+      <div id="dashboardListWrapper" class="dashboardList">
+        <ul id="dashboardList"></ul>
+      </div>
+    </div>
+
   </div>
 
   <div id="contentDiv">
