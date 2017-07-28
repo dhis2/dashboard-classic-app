@@ -6,7 +6,6 @@
 #contentDiv
 {
   position: relative;
-  top: 98px;
 }
 
 #contentList
@@ -22,19 +21,21 @@
 
 #dashboardControl
 {
-  position: absolute;
-  left: 20px;
-  margin-top: 48px;
   border-right: 0;
   box-shadow: #f1f1f1 0 1px 1px 0;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
 }
 
 #dashboardListContainer
 {
-  position: absolute;
-  left: 306px;
-  right: 20px;
-  margin-top: 48px;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+    margin-left: 10px;
 }
 
 #dashboardListWrapper
