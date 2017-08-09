@@ -130,7 +130,6 @@ function initPage() {
 
 
 const initTranslation = function ( d2 ) {
-
   global.i18n_share_your_interpretation_of = d2.i18n.getTranslation("share_your_interpretation_of");
   global.i18n_interpretation_was_shared = d2.i18n.getTranslation("interpretation_was_shared");
   global.i18n_viewing = d2.i18n.getTranslation("viewing");
@@ -211,7 +210,7 @@ const initTranslation = function ( d2 ) {
   jQuery("#i18n_external_access").html(d2.i18n.getTranslation("external_access"));
   jQuery("#i18n_public_access").html(d2.i18n.getTranslation("public_access"));
   jQuery("[name='i18n_can_view']").html(d2.i18n.getTranslation("can_view"));
-  jQuery("#i18n_none").html(d2.i18n.getTranslation("none"));
+  jQuery("[name='i18n_none']").html(d2.i18n.getTranslation("none"));
   jQuery("[name='i18n_can_edit_and_view']").html(d2.i18n.getTranslation("can_edit_and_view"));
   jQuery("#i18n_interpretations").html(d2.i18n.getTranslation("interpretations"));
   jQuery("[name='i18n_interpretations']").html(d2.i18n.getTranslation("interpretations"));
