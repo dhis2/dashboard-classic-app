@@ -183,6 +183,8 @@
 <div class="page" id="mainPage"> <!-- Do not set style attr -->
 
   <div id="interpretationPopup">
+    <div id="dashboardItemInterpretationContainer" style="width:50%;float:left;"></div>
+    <div id="interpretationContainer" style="width:46%;float:right;"></div>
   </div>
 
   <div id="dashboardHeader"><h3>
@@ -253,6 +255,12 @@
   <div id="shareForm">
     <textarea id="interpretationArea" class="interpretationArea" ></textarea>
     <input type="button" class="interpretationButton" value="" onclick="dhis2.db.shareInterpretation()">
+  </div>
+
+  <div id="shareFormError">
+    <p>$i18n.getString( 'cannot_write_interpretation' )</p>
+    <a class="greyButtonLink" href="javascript:void(0);" onclick="dhis2.db.closeDialog(this)"
+       style="margin-top: 1px">$i18n.getString( "close" )</a>
   </div>
 
   <div id="shareHelpForm">
