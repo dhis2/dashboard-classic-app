@@ -151,7 +151,7 @@ dhis2.db.tmpl = {
     "</div><div style='position:relative'>" +
     "<iframe id='plugin-${itemId}' style='width:100%;height:${dhis2.db.itemContentHeight-4}px;border:0' allowfullscreen src='${app.launchUrl}?dashboardItemId=${itemId}'></iframe>" +
     "</div></div></li>",
-    
+
     favoriteDescription : "<div id='favoriteDescription'>{{html description}}</div>",
 
 	interpretation : "<a href='javascript:dhis2.db.${exploreFunction}( \"${favoriteId}\", \"${interpretationId}\" )'><div id='interpretationContainer'><div>" +
@@ -629,8 +629,8 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender, t
     var userOrgUnit = dhis2.db.currentUserOrgUnit || [];
 
     if ("CHART" == dashboardItem.type) {
-        var pluginItems = dhis2.db.chartItems;
         tmpl = tmpl || dhis2.db.tmpl.chartItem;
+        var pluginItems = dhis2.db.chartItems;
         var content = $.tmpl(tmpl, {
             "itemId": dashboardItem.id,
             "id": dashboardItem.chart.id,
@@ -660,8 +660,8 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender, t
         }
     }
     else if ("EVENT_CHART" == dashboardItem.type) {
-        var pluginItems = dhis2.db.eventChartItems;
         tmpl = tmpl || dhis2.db.tmpl.eventChartItem;
+        var pluginItems = dhis2.db.eventChartItems;
         var content = $.tmpl(tmpl, {
             "itemId": dashboardItem.id,
             "id": dashboardItem.eventChart.id,
@@ -755,6 +755,7 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender, t
     }
     else if ("EVENT_REPORT" == dashboardItem.type) {
         tmpl = tmpl || dhis2.db.tmpl.eventReportItem;
+        var pluginItems = dhis2.db.eventReportItems;
         var content = $.tmpl(tmpl, {
             "itemId": dashboardItem.id,
             "id": dashboardItem.eventReport.id,
@@ -1450,7 +1451,7 @@ dhis2.db.shareInterpretation = function () {
                 $("#shareForm").dialog("close");
                 $("#interpretationArea").val("");
                 setHeaderDelayMessage(i18n_interpretation_was_shared);
-                
+
                 dhis2.db.renderDashboardListLoadFirst()
             },
             error: function(xhr, status, error) {
@@ -1563,7 +1564,7 @@ dhis2.db.viewInterpretationPopup = function (itemId, id, type) {
 		urlPath = 'eventReports';
 		exploreFunction = 'exploreEventReport'
 	}
-	
+
 	$.getJSON("../api/" + urlPath + "/" + id + ".json?fields=id,displayName,displayDescription,interpretations[id, text,lastUpdated,user[displayName],comments,likes]&" + dhis2.util.cacheBust(), function (data) {
 		var interpretationPopup = $('#interpretationPopup');
 		var dashboardItemInterpretationContainer = $('#dashboardItemInterpretationContainer');
@@ -1577,7 +1578,7 @@ dhis2.db.viewInterpretationPopup = function (itemId, id, type) {
 				300, true, true, dhis2.db.tmpl.interpretationDashboardItem,
 				'plugin-interpretation-' + item.id);
 		});
-		
+
 		//Add description panel
 		var favoriteDescriptionContent = $.tmpl(dhis2.db.tmpl.favoriteDescription, {
 		    "description": data.displayDescription
@@ -1607,7 +1608,7 @@ dhis2.db.viewInterpretationPopup = function (itemId, id, type) {
 			    "numberLikes": interpretation.likes,
 			    "numberComments": interpretation.comments.length,
 			    "exploreFunction": exploreFunction
-			    
+
 			});
 			dhis2.db.preOrAppend(interpretationContainer, interpretationContent, false);
 		}
