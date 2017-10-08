@@ -1084,8 +1084,8 @@ dhis2.db.exploreChart = function (uid, interpretationId) {
     window.location.href = "../dhis-web-visualizer/index.html?id=" + uid + ((interpretationId)?("&interpretationid=" + interpretationId):"");
 }
 
-dhis2.db.exploreEventChart = function (uid) {
-    window.location.href = "../dhis-web-event-visualizer/index.html?id=" + uid;
+dhis2.db.exploreEventChart = function (uid, interpretationId) {
+    window.location.href = "../dhis-web-event-visualizer/index.html?id=" + uid + ((interpretationId)?("&interpretationid=" + interpretationId):"");
 }
 
 dhis2.db.exploreMap = function (uid) {
@@ -1097,8 +1097,8 @@ dhis2.db.exploreReportTable = function (uid, interpretationId) {
     window.location.href = "../dhis-web-pivot/index.html?id=" + uid + ((interpretationId)?("&interpretationid=" + interpretationId):"");
 }
 
-dhis2.db.exploreEventReport = function (uid) {
-    window.location.href = "../dhis-web-event-reports/index.html?id=" + uid;
+dhis2.db.exploreEventReport = function (uid, interpretationId) {
+    window.location.href = "../dhis-web-event-reports/index.html?id=" + uid + ((interpretationId)?("&interpretationid=" + interpretationId):"");
 }
 
 dhis2.db.exploreApp = function (appKey, itemId) {
