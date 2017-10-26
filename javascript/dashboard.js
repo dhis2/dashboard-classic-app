@@ -710,9 +710,7 @@ dhis2.db.renderItem = function ($d, dashboardItem, width, prepend, autoRender) {
             dashboard: true,
             crossDomain: false,
             skipMask: true,
-            mapViews: [{
-                userOrgUnit: userOrgUnit
-            }]
+            userOrgUnit: userOrgUnit
         });
     }
     else if ("REPORT_TABLE" == dashboardItem.type) {
