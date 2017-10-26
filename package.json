@@ -1,6 +1,6 @@
 {
   "name": "dashboard-app",
-  "version": "28.0.3",
+  "version": "28.0.4",
   "description": "DHIS2 Dashboard App",
   "main": "src/app.js",
   "scripts": {
