@@ -275,7 +275,7 @@ dhis2.db.openAddDashboardForm = function () {
 
 dhis2.db.openManageDashboardForm = function () {
     if (undefined !== dhis2.db.current()) {
-        $.getJSON("../api/dashboards/" + dhis2.db.current(), function (data) {
+        $.getJSON("../api/28/dashboards/" + dhis2.db.current(), function (data) {
             var name = data.name;
             $("#dashboardRename").val(name);
             $("#manageDashboardForm").dialog({
@@ -324,7 +324,7 @@ dhis2.db.renameDashboard = function () {
 
         $.ajax({
             type: "put",
-            url: "../api/dashboards/" + dhis2.db.current(),
+            url: "../api/28/dashboards/" + dhis2.db.current(),
             contentType: "application/json",
             data: data,
             success: function () {
@@ -339,7 +339,7 @@ dhis2.db.removeDashboard = function () {
     if (undefined !== dhis2.db.current()) {
         $.ajax({
             type: "delete",
-            url: "../api/dashboards/" + dhis2.db.current(),
+            url: "../api/28/dashboards/" + dhis2.db.current(),
             success: function () {
                 $("#manageDashboardForm").dialog("destroy");
                 dhis2.db.clearCurrent();
@@ -504,7 +504,7 @@ dhis2.db.setFullItemWidth = function (id, isScrollbar) {
 
 dhis2.db.drawWideItems = function () {
     if (undefined !== dhis2.db.current()) {
-        var url = "../api/dashboards/" + dhis2.db.current() + "?fields=dashboardItems[id,shape]",
+        var url = "../api/28/dashboards/" + dhis2.db.current() + "?fields=dashboardItems[id,shape]",
             viewPortWidth = $(window).width(),
             marginAndSpacing = 60,
             realWidth = ( viewPortWidth - marginAndSpacing );
@@ -548,7 +548,7 @@ dhis2.db.renderDashboard = function (id) {
 
     $("#dashboard-" + dhis2.db.current()).addClass("currentDashboard");
 
-    $.getJSON("../api/dashboards/" + id + "?fields=:all,dashboardItems[:all,reports[id,displayName],chart[id,displayName],map[id,displayName],reportTable[id,displayName],eventReport[id,displayName],eventChart[id,displayName],resources[id,displayName],users[id,displayName]]&" + dhis2.util.cacheBust(), function (data) {
+    $.getJSON("../api/28/dashboards/" + id + "?fields=:all,dashboardItems[:all,reports[id,displayName],chart[id,displayName],map[id,displayName],reportTable[id,displayName],eventReport[id,displayName],eventChart[id,displayName],resources[id,displayName],users[id,displayName]]&" + dhis2.util.cacheBust(), function (data) {
         $( "#dashboardTitle" ).html( data.displayName );
         $d = $("#contentList").empty();
 
@@ -1003,7 +1003,7 @@ dhis2.db.moveItem = function (id, destItemId, position) {
     $targetDropLi.insertBefore($destLi);
     $targetLi.insertBefore($destLi);
 
-    var url = "../api/dashboards/" + dhis2.db.current() + "/items/" + id + "/position/" + position;
+    var url = "../api/28/dashboards/" + dhis2.db.current() + "/items/" + id + "/position/" + position;
 
     $.post(url, function () {
     });
@@ -1013,7 +1013,7 @@ dhis2.db.addItemContent = function (type, id) {
     if (undefined !== dhis2.db.current()) {
         $.ajax({
             type: "post",
-            url: "../api/dashboards/" + dhis2.db.current() + "/items/content",
+            url: "../api/28/dashboards/" + dhis2.db.current() + "/items/content",
             data: {
                 type: type,
                 id: id
@@ -1049,7 +1049,7 @@ dhis2.db.addItemContent = function (type, id) {
 dhis2.db.removeItem = function (id) {
     $.ajax({
         type: "delete",
-        url: "../api/dashboards/" + dhis2.db.current() + "/items/" + id,
+        url: "../api/28/dashboards/" + dhis2.db.current() + "/items/" + id,
         success: function () {
             dhis2.db.currentItem = undefined;
             $("#liDrop-" + id).remove();
@@ -1061,7 +1061,7 @@ dhis2.db.removeItem = function (id) {
 dhis2.db.removeItemContent = function (itemId, contentId) {
     $.ajax({
         type: "delete",
-        url: "../api/dashboards/" + dhis2.db.current() + "/items/" + itemId + "/content/" + contentId,
+        url: "../api/28/dashboards/" + dhis2.db.current() + "/items/" + itemId + "/content/" + contentId,
         success: function () {
             dhis2.db.renderDashboard(dhis2.db.current());
         }
@@ -1147,7 +1147,7 @@ dhis2.db.search = function () {
         return undefined;
     }
 
-    var url = "../api/dashboards/q/" + query + dhis2.db.getMaxParams();
+    var url = "../api/28/dashboards/q/" + query + dhis2.db.getMaxParams();
 
     var hits = $.ajax({
         url: url,
