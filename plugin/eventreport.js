@@ -3959,7 +3959,7 @@ Ext.onReady( function() {
 
     applyCss = function(config) {
         var css = '',
-            arrowUrl = config.dashboard ? '../dhis-web-commons/javascripts/plugin/images/arrowupdown.png' : '//dhis2-cdn.org/v217/plugin/images/arrowupdown.png';
+            arrowUrl = config.dashboard ? '../../../dhis-web-commons/javascripts/plugin/images/arrowupdown.png' : '//dhis2-cdn.org/v217/plugin/images/arrowupdown.png';
 
         css += 'table.pivot { font-family: arial,sans-serif,ubuntu,consolas; border-collapse: collapse; border-spacing: 0px; border: 0 none; font-size: 11px } \n';
         css += '.td-nobreak { white-space: nowrap; } \n';
