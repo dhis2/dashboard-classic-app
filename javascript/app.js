@@ -1,21 +1,21 @@
 const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
-if( process.env.NODE_ENV !== 'production' ) {
-  jQuery.ajaxSetup({headers: {Authorization: dhisDevConfig.authorization}}); // eslint-disable-line
+if (process.env.NODE_ENV !== 'production') {
+    jQuery.ajaxSetup({headers: {Authorization: dhisDevConfig.authorization}}); // eslint-disable-line
 }
 
 import {init, config, getInstance, getManifest, getUserSettings} from 'd2/lib/d2';
+
 import log from 'loglevel';
-import dhis2 from 'd2-ui/lib/header-bar/dhis2';
 
 
-function configI18n( userSettings ) {
-  const uiLocale = userSettings.keyUiLocale;
-  if( uiLocale && uiLocale !== 'en' ) {
-    // Add the language sources for the preferred locale
-    config.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
-  }
-  // Add english as locale for all cases (either as primary or fallback)
-  config.i18n.sources.add('./i18n/i18n_module_en.properties');
+function configI18n(userSettings) {
+    const uiLocale = userSettings.keyUiLocale;
+    if (uiLocale && uiLocale !== 'en') {
+        // Add the language sources for the preferred locale
+        config.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
+    }
+    // Add english as locale for all cases (either as primary or fallback)
+    config.i18n.sources.add('./i18n/i18n_module_en.properties');
 }
 
 getManifest('./manifest.webapp')
@@ -41,39 +41,40 @@ Ext.onReady(function(){
 
 
 jQuery(document).ready(function () {
-  initPage();
+    initPage();
 });
 
-function loadScript( url ) {
+function loadScript(url) {
 
-  return new Promise(function ( resolve, reject ) {
-    let head = document.getElementsByTagName('head')[0];
-    let scriptIndex = head.getElementsByTagName('script').length;
-    let refScript = head.getElementsByTagName('script')[scriptIndex - 1];
-    let script = document.createElement('script');
-    script.src = url;
-    script.async = false;
-    script.type = 'text/javascript';
-    script.addEventListener('load', function () {
-      resolve(script);
-    }, false);
+    return new Promise(function (resolve, reject) {
+        let head = document.getElementsByTagName('head')[0];
+        let scriptIndex = head.getElementsByTagName('script').length;
+        let refScript = head.getElementsByTagName('script')[scriptIndex - 1];
+        let script = document.createElement('script');
+        script.src = url;
+        script.async = false;
+        script.type = 'text/javascript';
+        script.addEventListener('load', function () {
+            resolve(script);
+        }, false);
 
-    script.addEventListener('error', function () {
-      reject(script);
-    }, false);
+        script.addEventListener('error', function () {
+            reject(script);
+        }, false);
 
-    refScript.parentNode.insertBefore(script, refScript.nextSibling);
-  });
+        refScript.parentNode.insertBefore(script, refScript.nextSibling);
+    });
 }
 
-const checkProfileFilled = function ( curUser ) {
-  let props = [curUser.jobTitle, curUser.introduction, curUser.gender, curUser.birthday,
-    curUser.nationality, curUser.employer, curUser.education, curUser.interests, curUser.languages];
-  let count = 0;
+const checkProfileFilled = function (curUser) {
+    let props = [curUser.jobTitle, curUser.introduction, curUser.gender, curUser.birthday,
+        curUser.nationality, curUser.employer, curUser.education, curUser.interests, curUser.languages];
+    let count = 0;
 
-  props.forEach(prop => {
-    count = prop != null ? (count + 1) : count;
-  });
+    props.forEach(prop => {
+        count = prop != null ? (count + 1) : count;
+    })
+    ;
 
   return count > 3;
 }
@@ -218,7 +219,3 @@ const initTranslation = function ( d2 ) {
   jQuery(".interpretationButton").val(d2.i18n.getTranslation("share"));
 
 }
-
-
-
-

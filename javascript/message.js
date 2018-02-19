@@ -21,7 +21,7 @@ function toggleRowSelected( element )
 
 function read( id )
 {
-    window.location.href = "../dhis-web-messaging/readMessage.action?id=" + id;
+    window.location.href = "../../../dhis-web-messaging/readMessage.action?id=" + id;
 }
 
 function userCount() {
@@ -90,7 +90,7 @@ function sendReply()
 
     $.postUTF8( "sendReply.action", { id: id, text: text, internal: false }, function()
     {
-        window.location.href = "../dhis-web-messaging/readMessage.action?id=" + id;
+        window.location.href = "../../../dhis-web-messaging/readMessage.action?id=" + id;
     } );
 }
 
@@ -110,7 +110,7 @@ function sendInternalReply()
     setHeaderWaitMessage( i18n_sending_message );
 
     $.postUTF8("sendReply.action", {id: id, text: text, internal: internal}, function () {
-        window.location.href = "../dhis-web-messaging/readMessage.action?id=" + id;
+        window.location.href = "../../../dhis-web-messaging/readMessage.action?id=" + id;
     });
 
 }
@@ -123,7 +123,7 @@ function toggleFollowUp( id, followUp )
 
     $.getJSON( url, function( json )
     {
-        var imageSrc = json.message == "true" ? "../images/marked.png" : "../images/unmarked.png";
+        var imageSrc = json.message == "true" ? "../../../images/marked.png" : "../../../images/unmarked.png";
 
         $( "#" + imageId ).attr( "src", imageSrc );
     } );
@@ -136,7 +136,7 @@ function updatePriority(id) {
 function togglePriority( id, priority) {
 
     $.ajax({
-        url: "../api/messageConversations/"+id+"/priority",
+        url: "../../../api/messageConversations/"+id+"/priority",
         type: "POST",
         data: {"messageConversationPriority": priority}
     }).then(function() {
@@ -154,7 +154,7 @@ function toggleAssignee( id, assignee) {
     if( assignee === "none" )
     {
         $.ajax({
-            url: "../api/messageConversations/"+id+"/assign",
+            url: "../../../api/messageConversations/"+id+"/assign",
             type: "DELETE"
         }).then(function() {
             $("#savedMessage").show().delay( 2400).fadeOut();
@@ -162,7 +162,7 @@ function toggleAssignee( id, assignee) {
     } else
     {
         $.ajax({
-            url: "../api/messageConversations/"+id+"/assign",
+            url: "../../../api/messageConversations/"+id+"/assign",
             type: "POST",
             data: {userId: assignee}
         }).then(function() {
@@ -186,7 +186,7 @@ function updateStatus(id) {
 function toggleStatus( id, status) {
 
     $.ajax({
-        url: "../api/messageConversations/"+id+"/status",
+        url: "../../../api/messageConversations/"+id+"/status",
         type: "POST",
         data: {"messageConversationStatus": status}
     }).then(function() {
@@ -209,11 +209,11 @@ function formatItem( item )
 {
     if( item.id && item.id.indexOf( "u:" ) != -1 )
     {
-        return '<img src="../icons/glyphicons_003_user.png" style="width: 12px; height: 12px; padding-right: 5px;"/>' + item.text;
+        return '<img src="../../../icons/glyphicons_003_user.png" style="width: 12px; height: 12px; padding-right: 5px;"/>' + item.text;
     }
     else if( item.id && item.id.indexOf( 'ug:' ) != -1 )
     {
-        return '<img src="../icons/glyphicons_043_group.png" style="width: 12px; height: 12px; padding-right: 5px;"/>' + item.text;
+        return '<img src="../../../icons/glyphicons_043_group.png" style="width: 12px; height: 12px; padding-right: 5px;"/>' + item.text;
     }
     else
     {
@@ -238,7 +238,7 @@ var messageOperations = ( function() {
             setHeaderWaitMessage( i18n_deleting );
 
             $.ajax( {
-                    url: "../api/messageConversations?" + $.param( { mc: messages }, true ),
+                    url: "../../../api/messageConversations?" + $.param( { mc: messages }, true ),
                     contentType: "application/json",
                     dataType: "json",
                     type: "DELETE",
@@ -273,7 +273,7 @@ var messageOperations = ( function() {
         }
 
         $.ajax( {
-            url: "../api/messageConversations/" + property,
+            url: "../../../api/messageConversations/" + property,
             type: "POST",
             data: JSON.stringify( messages ),
             contentType: "application/json",
@@ -302,7 +302,7 @@ var messageOperations = ( function() {
 
     var setFollowupIndicator = function( messageUids, marked ) {
         var messages = $( "#messages" );
-        var imgSrc = marked ? "../images/marked.png" : "../images/unmarked.png";
+        var imgSrc = marked ? "../../../images/marked.png" : "../../../images/unmarked.png";
 
         for( var i = 0; i < messageUids.length; i++ ) {
             messages.find( "[name='" + messageUids[i] + "'] .followup-icon img" ).attr( "src", imgSrc );

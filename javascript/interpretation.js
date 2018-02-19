@@ -6,7 +6,7 @@ $(function() {
     isNextPage();
   });
 
-  $("#interpretationFeed").load("../dhis-web-messaging/getInterpretations.action", function() {
+  $("#interpretationFeed").load("../../../dhis-web-messaging/getInterpretations.action", function() {
     $(".commentArea").autogrow();
   });
 });
@@ -36,7 +36,7 @@ function loadNextPage() {
   pageLock = true;
   currentPage++;
 
-  $.get("../dhis-web-messaging/getInterpretations.action", { page: currentPage }, function( data ) {
+  $.get("../../../dhis-web-messaging/getInterpretations.action", { page: currentPage }, function( data ) {
     $("#interpretationFeed").append(data);
 
     if( !isDefined(data) || $.trim(data).length == 0 ) {
@@ -53,7 +53,7 @@ function postComment( uid ) {
 
   $("#commentArea" + uid).val("");
 
-  var url = "../api/interpretations/" + uid + "/comments";
+  var url = "../../../api/interpretations/" + uid + "/comments";
 
   var created = getCurrentDate();
 
@@ -134,7 +134,7 @@ function setupTextArea( ipUid, ipCommentUid, $target ) {
 
       if( ipCommentUid ) {
         $.ajax({
-          url: '../api/interpretations/' + ipUid + '/comments/' + ipCommentUid,
+          url: '../../../api/interpretations/' + ipUid + '/comments/' + ipCommentUid,
           contentType: 'text/plain; charset=UTF-8',
           type: 'PUT',
           data: content
@@ -147,7 +147,7 @@ function setupTextArea( ipUid, ipCommentUid, $target ) {
         });
       } else {
         $.ajax({
-          url: '../api/interpretations/' + ipUid,
+          url: '../../../api/interpretations/' + ipUid,
           contentType: 'text/plain; charset=UTF-8',
           type: 'PUT',
           data: content
@@ -191,7 +191,7 @@ function deleteIp( e ) {
 
   if( isHeader ) {
     jQuery.ajax({
-      url: '../api/interpretations/' + ipUid,
+      url: '../../../api/interpretations/' + ipUid,
       type: 'DELETE'
     }).done(function() {
       jqInterpretation.remove();
@@ -200,7 +200,7 @@ function deleteIp( e ) {
     });
   } else if( isComment ) {
     jQuery.ajax({
-      url: '../api/interpretations/' + ipUid + '/comments/' + ipCommentUid,
+      url: '../../../api/interpretations/' + ipUid + '/comments/' + ipCommentUid,
       type: 'DELETE'
     }).done(function() {
       jqInterpretationComment.remove();
