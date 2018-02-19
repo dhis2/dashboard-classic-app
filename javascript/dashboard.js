@@ -573,25 +573,25 @@ dhis2.db.renderDashboard = function (id) {
             });
 
             // report table
-            reportTablePlugin.url = '..';
+            reportTablePlugin.url = '../../..';
             reportTablePlugin.dashboard = true;
             reportTablePlugin.showTitles = true;
             reportTablePlugin.load(dhis2.db.reportTableItems);
 
             // chart
-            chartPlugin.url = '..';
+            chartPlugin.url = '../../..';
             chartPlugin.dashboard = true;
             chartPlugin.showTitles = true;
             chartPlugin.load(dhis2.db.chartItems);
 
             // event report
-            eventReportPlugin.url = '..';
+            eventReportPlugin.url = '../../..';
             eventReportPlugin.dashboard = true;
             eventReportPlugin.showTitles = true;
             eventReportPlugin.load(dhis2.db.eventReportItems);
 
             // event chart
-            eventChartPlugin.url = '..';
+            eventChartPlugin.url = '../../..';
             eventChartPlugin.dashboard = true;
             eventChartPlugin.showTitles = true;
             eventChartPlugin.load(dhis2.db.eventChartItems);
@@ -1528,6 +1528,7 @@ dhis2.db.updateSelectedOrgUnits = function () {
 
 dhis2.db.clearSelectedOrgUnits = function () {
     dhis2.db.currentUserOrgUnit = [];
+    selectionTreePath = '../../../dhis-web-commons/oust/';
     selectionTree.clearSelectedOrganisationUnitsAndBuildTree();
     dhis2.db.renderDashboard(dhis2.db.current());
     $("#orgUnitSelectorForm").dialog("destroy");
@@ -1655,6 +1656,7 @@ $(document).ready(function () {
   $("#searchField").keyup(dhis2.db.search);
 
   selectionTreeSelection.setMultipleSelectionAllowed(true);
+    selectionTreePath = '../../../dhis-web-commons/oust/';
   selectionTree.clearSelectedOrganisationUnitsAndBuildTree();
 
   $.getJSON("../../../api/me/user-account.json?" + dhis2.util.cacheBust(), function (json) {
