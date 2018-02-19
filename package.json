@@ -1,6 +1,6 @@
 {
   "name": "dashboard-web-integration",
-  "version": "28.0.6",
+  "version": "28.0.8",
   "description": "DHIS2 Dashboard App",
   "main": "src/app.js",
   "scripts": {
