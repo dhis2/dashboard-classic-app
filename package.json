@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-app",
+  "name": "dashboard-web-integration",
   "version": "28.0.6",
   "description": "DHIS2 Dashboard App",
   "main": "src/app.js",
@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/dhis2/dashboard-app",
   "manifest.webapp": {
+    "appType": "APP",
     "name": "dashboard-web-integration",
     "icons": {
       "48": "icon.png"
