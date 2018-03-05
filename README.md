@@ -1,1 +1,1 @@
-This contents dashboard app of DHIS2
+DHIS2 Dashboard Classic web app
